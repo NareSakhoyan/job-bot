@@ -131,9 +131,12 @@ early. The fix would be to loosen the proper-noun check before the numeric one.
   `ANTHROPIC_API_KEY` in the shell silently shadows the file.
 - **Restart the dev server after `prisma generate`.** A running Next process
   holds the old client and fails with `Unknown argument` on new columns.
-- **Never run `next build` expecting `.next`.** `pnpm build` writes to
-  `.next-build` precisely so it cannot clobber a running dev server; that
-  collision produced a 404 stylesheet and an unstyled dashboard once already.
+- **`pnpm build` writes `.next` and will clobber a running dev server.**
+  That collision produces a 404 stylesheet and an unstyled dashboard. The
+  build used to write `.next-build` to avoid it, which meant every
+  deployment host looked for `.next` and found nothing. `.next` is now the
+  default because hosts require it; use `pnpm --filter @job-bot/web run
+  build:isolated` when a dev server is running.
 - **`pnpm db:seed` skips profiles that already exist.** The dashboard is where
   profiles are edited now; `pnpm db:seed:force` re-imports from files, and
   `pnpm export` writes the database back out.
