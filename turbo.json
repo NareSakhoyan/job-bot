@@ -1,10 +1,45 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [".env"],
-  "globalEnv": ["DATABASE_URL", "LOG_LEVEL", "NODE_ENV", "DATA_DIR"],
+  "globalDependencies": [
+    ".env"
+  ],
+  "globalEnv": [
+    "DATABASE_URL",
+    "DATA_DIR",
+    "LOG_LEVEL",
+    "NODE_ENV",
+    "ANTHROPIC_API_KEY",
+    "LLM_PROVIDER",
+    "LLM_MODEL",
+    "LLM_EFFORT",
+    "LLM_MATCH_MODEL",
+    "LLM_MATCH_EFFORT",
+    "LLM_MANUAL_DIR",
+    "LLM_MANUAL_TIMEOUT_MS",
+    "POSTGRES_USER",
+    "POSTGRES_PASSWORD",
+    "POSTGRES_DB",
+    "POSTGRES_PORT",
+    "DASHBOARD_PASSWORD"
+  ],
   "tasks": {
-    "build": { "dependsOn": ["^build"], "outputs": [".next/**", "!.next/cache/**"] },
-    "typecheck": { "dependsOn": ["^typecheck"] },
-    "dev": { "cache": false, "persistent": true }
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "typecheck": {
+      "dependsOn": [
+        "^typecheck"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
   }
 }
