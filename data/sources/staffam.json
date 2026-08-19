@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "pages": 24,
+  "remoteOnly": false,
+  "fetchDetails": true,
+  "categories": [
+    "software-development",
+    "other-it",
+    "network",
+    "analytics",
+    "quality-assurance",
+    "design",
+    "telecommunication",
+    "engineering"
+  ]
+}
