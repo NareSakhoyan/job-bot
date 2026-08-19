@@ -34,12 +34,19 @@
     },
     "typecheck": {
       "dependsOn": [
-        "^typecheck"
+        "^typecheck",
+        "@job-bot/database#build"
       ]
     },
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "@job-bot/database#build": {
+      "cache": false,
+      "inputs": [
+        "prisma/schema.prisma"
+      ]
     }
   }
 }

@@ -9,7 +9,8 @@
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",
     "seed": "tsx prisma/seed.ts",
-    "generate": "prisma generate"
+    "generate": "prisma generate",
+    "build": "prisma generate"
   },
   "dependencies": {
     "@job-bot/shared": "workspace:*",
