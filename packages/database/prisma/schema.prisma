@@ -24,8 +24,12 @@ datasource db {
   url = env("DATABASE_URL")
 
   // Migrations. A pooler cannot run DDL or advisory locks, so migrate and
-  // introspect need the direct connection (:5432). Falls back to DATABASE_URL
-  // when unset, which is correct for a plain local Postgres.
+  // introspect need the direct connection (:5432).
+  //
+  // Prisma requires this variable to exist once it is declared — an absent
+  // DIRECT_URL is a validation error, not a fallback to DATABASE_URL. For a
+  // plain local Postgres the two are the same connection, so prisma.config.ts
+  // defaults one to the other rather than making every developer set both.
   directUrl = env("DIRECT_URL")
 }
 

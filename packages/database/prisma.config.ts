@@ -26,6 +26,17 @@ const loadRootEnv = (): void => {
 
 loadRootEnv();
 
+/**
+ * `directUrl = env("DIRECT_URL")` in the schema is a hard requirement, not a
+ * fallback: Prisma fails validation if the variable is absent, even when the
+ * pooled and direct connections are the same host. Defaulting it here keeps a
+ * plain local Postgres working with only DATABASE_URL set, while a pooled host
+ * still gets its separate direct connection when one is provided.
+ */
+if (!process.env.DIRECT_URL && process.env.DATABASE_URL) {
+  process.env.DIRECT_URL = process.env.DATABASE_URL;
+}
+
 export default defineConfig({
   schema: join("prisma", "schema.prisma"),
   migrations: {
