@@ -1,0 +1,13 @@
+[
+  { "company": "Linear", "size": "SMALL", "hqCountry": "US", "region": "NA" },
+  { "company": "Replit", "size": "SMALL", "hqCountry": "US", "region": "NA" },
+  { "company": "Vanta", "size": "MID", "hqCountry": "US", "region": "NA" },
+  { "company": "Duolingo", "size": "MID", "hqCountry": "US", "region": "NA" },
+  { "company": "Airtable", "size": "MID", "hqCountry": "US", "region": "NA" },
+  { "company": "Plaid", "size": "MID", "hqCountry": "US", "region": "NA" },
+  { "company": "Ramp", "size": "MID", "hqCountry": "US", "region": "NA" },
+  { "company": "Mozilla", "size": "LARGE", "hqCountry": "US", "region": "NA" },
+  { "company": "Anthropic", "size": "LARGE", "hqCountry": "US", "region": "NA" },
+  { "company": "GitLab", "size": "LARGE", "hqCountry": "US", "region": "NA" },
+  { "company": "Deel", "size": "LARGE", "hqCountry": "US", "region": "NA" }
+]
