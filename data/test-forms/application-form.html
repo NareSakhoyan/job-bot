@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Helio Analytics — Apply: Machine Learning Engineer</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 46rem; margin: 2rem auto; padding: 0 1rem; }
+      fieldset { border: 1px solid #ccc; border-radius: .5rem; margin-bottom: 1.5rem; padding: 1rem 1.25rem; }
+      legend { font-weight: 600; padding: 0 .4rem; }
+      label { display: block; margin-top: .9rem; font-size: .9rem; }
+      input, select, textarea { width: 100%; padding: .45rem; margin-top: .25rem; box-sizing: border-box; }
+      .radio-row label { display: inline-block; margin-right: 1.25rem; }
+      .radio-row input { width: auto; }
+      button { margin-top: 1rem; padding: .6rem 1.2rem; font-size: 1rem; }
+      .note { color: #666; font-size: .85rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Apply — Machine Learning Engineer</h1>
+    <p class="note">
+      Local test fixture for Phase 4. Nothing here submits anywhere; the form has no action.
+    </p>
+
+    <form id="application-form">
+      <fieldset>
+        <legend>About you</legend>
+
+        <label for="first-name">First name</label>
+        <input type="text" id="first-name" name="first_name" required />
+
+        <label for="last-name">Last name</label>
+        <input type="text" id="last-name" name="last_name" required />
+
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone" />
+
+        <label for="location">Current location (city, country)</label>
+        <input type="text" id="location" name="location" />
+
+        <label for="linkedin">LinkedIn profile URL</label>
+        <input type="url" id="linkedin" name="linkedin" />
+
+        <label for="github">GitHub profile URL</label>
+        <input type="url" id="github" name="github" />
+
+        <label for="portfolio">Portfolio or personal website</label>
+        <input type="url" id="portfolio" name="portfolio" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Experience</legend>
+
+        <label for="years">Years of professional experience</label>
+        <input type="number" id="years" name="years_experience" min="0" required />
+
+        <label for="current-employer">Current company</label>
+        <input type="text" id="current-employer" name="current_company" />
+
+        <label for="current-title">Current job title</label>
+        <input type="text" id="current-title" name="current_title" />
+
+        <label for="salary">Expected salary</label>
+        <input type="text" id="salary" name="salary_expectation" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Work authorization</legend>
+
+        <label for="sponsorship">Do you require visa sponsorship?</label>
+        <select id="sponsorship" name="requires_sponsorship" required>
+          <option value="">Select…</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+
+        <p style="margin-bottom:0">Are you authorized to work in the country of this role?</p>
+        <div class="radio-row">
+          <input type="radio" id="auth-yes" name="work_authorized" value="yes" />
+          <label for="auth-yes">Yes</label>
+          <input type="radio" id="auth-no" name="work_authorized" value="no" />
+          <label for="auth-no">No</label>
+        </div>
+
+        <label for="notice">Notice period</label>
+        <select id="notice" name="notice_period">
+          <option value="">Select…</option>
+          <option>Immediately</option>
+          <option>2 weeks</option>
+          <option>1 month</option>
+          <option>3 months</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Documents and questions</legend>
+
+        <label for="resume">Upload your resume (PDF or Markdown)</label>
+        <input type="file" id="resume" name="resume" required />
+
+        <label for="cover-letter">Cover letter</label>
+        <textarea id="cover-letter" name="cover_letter" rows="6"></textarea>
+
+        <label for="why">Why are you interested in this role?</label>
+        <textarea id="why" name="why_interested" rows="4"></textarea>
+
+        <label for="tech">What relevant experience do you have with the technologies in this posting?</label>
+        <textarea id="tech" name="tech_experience" rows="4"></textarea>
+
+        <label for="referral">How did you hear about us?</label>
+        <input type="text" id="referral" name="referral_source" />
+      </fieldset>
+
+      <button type="submit" id="submit-application">Submit application</button>
+      <button type="button" id="save-draft">Save draft</button>
+    </form>
+  </body>
+</html>

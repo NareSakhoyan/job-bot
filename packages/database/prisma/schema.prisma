@@ -1,0 +1,514 @@
+// Job Bot — Phase 1 schema.
+//
+// Design notes:
+//  * A `Job` is the canonical posting. Each time a source reports that posting
+//    a `JobSighting` row is written. This is what makes deduplication real:
+//    one job discovered on three boards is one Job with three sightings.
+//  * `Application` carries an append-only `ApplicationEvent` log so every
+//    agent action and status transition is persisted and auditable.
+//  * Nothing here is user-specific in code: the profile is seeded from
+//    editable JSON under data/profile/.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------- enums
+
+enum RemotePreference {
+  REMOTE_ONLY
+  HYBRID
+  ONSITE
+  FLEXIBLE
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERNSHIP
+  TEMPORARY
+  FREELANCE
+}
+
+enum SkillLevel {
+  EXPERT
+  ADVANCED
+  INTERMEDIATE
+  BEGINNER
+}
+
+enum SalaryPeriod {
+  YEAR
+  MONTH
+  DAY
+  HOUR
+}
+
+enum WorkAuthorizationStatus {
+  CITIZEN
+  PERMANENT_RESIDENT
+  WORK_VISA
+  STUDENT_VISA
+  REQUIRES_SPONSORSHIP
+}
+
+enum OutcomeStage {
+  NO_RESPONSE
+  APPLICATION_REVIEW
+  RECRUITER_SCREEN
+  TECHNICAL_SCREEN
+  INTERVIEW_LOOP
+  FINAL_ROUND
+  OFFER_STAGE
+}
+
+enum OutcomeResult {
+  REJECTED
+  GHOSTED
+  WITHDRAWN
+  OFFER
+  ONGOING
+}
+
+/// Closed vocabulary. See REJECTION_REASONS in @job-bot/shared for why.
+enum RejectionReason {
+  INSUFFICIENT_YEARS
+  SENIORITY_MISMATCH
+  MISSING_TECHNOLOGY
+  DOMAIN_EXPERIENCE
+  WORK_AUTHORIZATION
+  LOCATION_OR_TIMEZONE
+  LANGUAGE_REQUIREMENT
+  SALARY_EXPECTATION
+  ROLE_CLOSED
+  INTERNAL_CANDIDATE
+  STRONGER_APPLICANTS
+  NO_REASON_GIVEN
+}
+
+enum PipelineRunKind {
+  DISCOVER
+  MATCH
+  PREPARE
+  SUBMIT
+}
+
+enum PipelineRunStatus {
+  RUNNING
+  SUCCEEDED
+  FAILED
+}
+
+enum EducationKind {
+  DEGREE
+  COURSE
+  CERTIFICATION
+}
+
+enum MatchRecommendation {
+  STRONG_MATCH
+  GOOD_MATCH
+  POSSIBLE_MATCH
+  WEAK_MATCH
+  NOT_RECOMMENDED
+}
+
+enum ApplicationStatus {
+  DISCOVERED
+  ANALYZED
+  SHORTLISTED
+  REJECTED
+  PREPARING
+  READY_FOR_REVIEW
+  APPROVED
+  SUBMITTED
+  WITHDRAWN
+  REJECTED_BY_COMPANY
+  INTERVIEW
+}
+
+enum SubmissionStatus {
+  NOT_STARTED
+  FORM_FILLED
+  AWAITING_APPROVAL
+  IN_PROGRESS
+  HANDED_OFF
+  SUBMITTED
+  UNCONFIRMED
+  FAILED
+}
+
+/// One invocation of a worker pipeline stage, started from the dashboard.
+///
+/// The row is the source of truth for progress: the runner process streams the
+/// worker's own log lines into it, and the UI polls the row rather than the
+/// process. That split is what lets a dashboard restart recover — the child is
+/// a real OS process identified by `pid`, and a RUNNING row whose pid is dead
+/// is reconciled to FAILED instead of blocking the queue forever.
+model PipelineRun {
+  id String @id @default(cuid())
+
+  kind   PipelineRunKind
+  status PipelineRunStatus @default(RUNNING)
+
+  /// The exact argv passed to the worker, for reproducing a run by hand.
+  args String[]
+  /// Who pressed the button. Always `human:`-prefixed.
+  startedBy String
+  pid       Int?
+
+  /// The last meaningful thing the worker said.
+  note  String?
+  /// Counter pair when the current stage reports one.
+  done  Int?
+  total Int?
+
+  error   String? @db.Text
+  logPath String?
+
+  startedAt  DateTime  @default(now())
+  finishedAt DateTime?
+
+  @@index([status, startedAt])
+  @@map("pipeline_runs")
+}
+
+// ---------------------------------------------------------------- profile
+
+model UserProfile {
+  id   String @id @default(cuid())
+  slug String @unique
+
+  fullName          String
+  email             String
+  phone             String?
+  location          String
+  headline          String
+  summary           String  @db.Text
+  yearsOfExperience Float
+
+  targetRoles        String[]
+  preferredLocations String[]
+  remotePreference   RemotePreference
+  employmentTypes    EmploymentType[]
+  industries         String[]
+
+  excludedCompanies    String[]
+  excludedTechnologies String[]
+
+  salaryMin      Int?
+  salaryMax      Int?
+  salaryCurrency String       @default("USD")
+  salaryPeriod   SalaryPeriod @default(YEAR)
+
+  workAuthCountry     String
+  workAuthStatus      WorkAuthorizationStatus
+  requiresSponsorship Boolean                 @default(false)
+  workAuthNotes       String?
+
+  /// Whether an on-site role abroad is on the table at all. Defaults to false:
+  /// assuming someone will move for a job is the optimistic reading, and this
+  /// field exists to stop matching being optimistic about eligibility.
+  willRelocate        Boolean                 @default(false)
+
+  githubUrl   String?
+  linkedinUrl String?
+  websiteUrl  String?
+
+  skills       ProfileSkill[]
+  experiences  Experience[]
+  education    Education[]
+  matches      JobMatch[]
+  applications Application[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("user_profiles")
+}
+
+model ProfileSkill {
+  id        String @id @default(cuid())
+  profileId String
+
+  name      String
+  category  String
+  level     SkillLevel
+  yearsUsed Float?
+
+  profile UserProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@unique([profileId, name])
+  @@index([profileId])
+  @@map("profile_skills")
+}
+
+model Experience {
+  id        String @id @default(cuid())
+  profileId String
+  slug      String @unique
+
+  company        String
+  role           String
+  employmentType EmploymentType
+  location       String
+  isRemote       Boolean        @default(false)
+  startDate      DateTime       @db.Date
+  endDate        DateTime?      @db.Date
+  isCurrent      Boolean        @default(false)
+
+  description      String   @db.Text
+  technologies     String[]
+  responsibilities String[]
+  achievements     String[]
+
+  profile  UserProfile         @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  projects ExperienceProject[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([profileId])
+  @@map("experiences")
+}
+
+model ExperienceProject {
+  id           String @id @default(cuid())
+  experienceId String
+  slug         String @unique
+
+  name         String
+  description  String   @db.Text
+  technologies String[]
+  url          String?
+  impact       String?
+
+  experience Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+
+  @@index([experienceId])
+  @@map("experience_projects")
+}
+
+model Education {
+  id        String @id @default(cuid())
+  profileId String
+  slug      String @unique
+
+  institution String
+  program     String
+  kind        EducationKind
+  startDate   DateTime      @db.Date
+  endDate     DateTime?     @db.Date
+  notes       String?
+
+  profile UserProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([profileId])
+  @@map("education")
+}
+
+// ---------------------------------------------------------------- jobs
+
+model Job {
+  id String @id @default(cuid())
+
+  /// Stable hash of normalized company + title + location bucket.
+  /// The uniqueness constraint is what prevents cross-source duplicates.
+  dedupeKey String @unique
+
+  company        String
+  title          String
+  location       String
+  isRemote       Boolean         @default(false)
+  employmentType EmploymentType?
+
+  salaryMin      Int?
+  salaryMax      Int?
+  salaryCurrency String?
+  salaryPeriod   SalaryPeriod?
+
+  /// Description exactly as published.
+  description String @db.Text
+  /// Whitespace-normalized plain text, used for matching and search.
+  descriptionText String @db.Text
+
+  requirements     String[]
+  responsibilities String[]
+  technologies     String[]
+
+  postedAt     DateTime?
+  discoveredAt DateTime  @default(now())
+  /// Last discovery run in which any source still returned this posting.
+  lastSeenAt   DateTime  @default(now())
+  /// Set when a posting stopped appearing on the boards that carried it.
+  closedAt     DateTime?
+  updatedAt    DateTime  @updatedAt
+
+  /// Canonical URL, taken from the first sighting.
+  url           String
+  primarySource String
+
+  sightings    JobSighting[]
+  matches      JobMatch[]
+  applications Application[]
+
+  @@index([company])
+  @@index([discoveredAt])
+  @@index([closedAt])
+  @@map("jobs")
+}
+
+/// One row per (source, externalId) that resolved to a given Job.
+model JobSighting {
+  id    String @id @default(cuid())
+  jobId String
+
+  source     String
+  externalId String
+  url        String
+  rawPayload Json
+
+  firstSeenAt DateTime @default(now())
+  lastSeenAt  DateTime @default(now())
+
+  job Job @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([source, externalId])
+  @@index([jobId])
+  @@map("job_sightings")
+}
+
+model JobMatch {
+  id        String @id @default(cuid())
+  jobId     String
+  profileId String
+
+  /// Final blended score. Deterministic scoring owns this number; the LLM
+  /// may only adjust reasoning and confidence, never set the score alone.
+  score              Int
+  deterministicScore Int
+  recommendation     MatchRecommendation
+
+  /// MatchFactor[] validated by matchFactorsSchema in @job-bot/shared.
+  factors Json
+
+  matchingSkills String[]
+  missingSkills  String[]
+  concerns       String[]
+  reasoning      String   @db.Text
+  confidence     Float
+
+  modelVersion String
+
+  job     Job         @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  profile UserProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  /// One current match per (profile, job) — re-running the matcher replaces it.
+  @@unique([profileId, jobId])
+  @@index([profileId, score])
+  @@map("job_matches")
+}
+
+// ---------------------------------------------------------------- applications
+
+model Application {
+  id        String @id @default(cuid())
+  jobId     String
+  profileId String
+
+  status           ApplicationStatus @default(DISCOVERED)
+  submissionStatus SubmissionStatus  @default(NOT_STARTED)
+
+  /// TailoredResume validated by tailoredResumeSchema in @job-bot/shared.
+  tailoredResume Json?
+  coverLetter    String? @db.Text
+  /// ApplicationAnswer[] validated by applicationAnswersSchema.
+  answers        Json?
+
+  notes String? @db.Text
+
+  readyAt     DateTime?
+  approvedAt  DateTime?
+  submittedAt DateTime?
+
+  /// Set only by an explicit human approval action in the dashboard.
+  approvedBy String?
+
+  job     Job                @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  profile UserProfile        @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  events  ApplicationEvent[]
+  outcome ApplicationOutcome?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([profileId, jobId])
+  @@index([profileId, status])
+  @@map("applications")
+}
+
+/// What happened after an application was sent.
+///
+/// One current outcome per application. The verbatim wording is kept for the
+/// human to read; only `reasons` — drawn from a closed vocabulary — is ever
+/// machine-readable, so no single recruiter's phrasing can rewrite matching.
+model ApplicationOutcome {
+  id            String @id @default(cuid())
+  applicationId String @unique
+
+  stage  OutcomeStage
+  result OutcomeResult
+
+  /// Exactly what the company said, unedited. Never scored.
+  verbatim String? @db.Text
+  /// Objective codes read out of `verbatim`. Empty is a valid answer.
+  reasons  RejectionReason[]
+
+  /// Who recorded this, and how it was learned (email, portal, call).
+  recordedBy String
+  learnedVia String?
+
+  /// When the company decided, which is not when we recorded it.
+  decidedAt DateTime
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([result, decidedAt])
+  @@map("application_outcomes")
+}
+
+/// Append-only audit trail. Every agent action and status transition lands
+/// here so the pipeline is fully observable after the fact.
+model ApplicationEvent {
+  id            String @id @default(cuid())
+  applicationId String
+
+  type       String
+  fromStatus ApplicationStatus?
+  toStatus   ApplicationStatus?
+  actor      String
+  message    String
+  metadata   Json?
+
+  application Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([applicationId, createdAt])
+  @@map("application_events")
+}

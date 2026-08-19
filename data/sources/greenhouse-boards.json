@@ -1,0 +1,70 @@
+[
+  {
+    "board": "gitlab",
+    "company": "GitLab"
+  },
+  {
+    "board": "duolingo",
+    "company": "Duolingo"
+  },
+  {
+    "board": "airtable",
+    "company": "Airtable"
+  },
+  {
+    "board": "anthropic",
+    "company": "Anthropic"
+  },
+  {
+    "board": "mozilla",
+    "company": "Mozilla"
+  },
+  {
+    "board": "parloa",
+    "company": "Parloa"
+  },
+  {
+    "board": "typeform",
+    "company": "Typeform"
+  },
+  {
+    "board": "contentful",
+    "company": "Contentful"
+  },
+  {
+    "board": "algolia",
+    "company": "Algolia"
+  },
+  {
+    "board": "veriff",
+    "company": "Veriff"
+  },
+  {
+    "board": "wolt",
+    "company": "Wolt"
+  },
+  {
+    "board": "raisin",
+    "company": "Raisin"
+  },
+  {
+    "board": "mattermost",
+    "company": "Mattermost"
+  },
+  {
+    "board": "consensys",
+    "company": "Consensys"
+  },
+  {
+    "board": "turing",
+    "company": "Turing"
+  },
+  {
+    "board": "remotecom",
+    "company": "Remote"
+  },
+  {
+    "board": "picsart",
+    "company": "Picsart"
+  }
+]

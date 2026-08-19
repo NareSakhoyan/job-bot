@@ -1,0 +1,26 @@
+{
+  "name": "@job-bot/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "start": "tsx src/index.ts",
+    "discover": "tsx src/index.ts discover",
+    "match": "tsx src/index.ts match",
+    "run": "tsx src/index.ts run"
+  },
+  "dependencies": {
+    "@job-bot/agent": "workspace:*",
+    "@job-bot/database": "workspace:*",
+    "@job-bot/jobs": "workspace:*",
+    "@job-bot/matching": "workspace:*",
+    "@job-bot/shared": "workspace:*",
+    "@job-bot/resume": "workspace:*",
+    "@job-bot/browser": "workspace:*"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,80 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-jobbot}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-jobbot}
+      POSTGRES_DB: ${POSTGRES_DB:-jobbot}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-jobbot} -d ${POSTGRES_DB:-jobbot}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Applies migrations and seeds the database, then exits. `web` waits for it.
+  migrate:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-jobbot}:${POSTGRES_PASSWORD:-jobbot}@db:5432/${POSTGRES_DB:-jobbot}?schema=public
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    volumes:
+      - ./data:/app/data:ro
+    command: >
+      sh -c "pnpm --filter @job-bot/database exec prisma migrate deploy &&
+             pnpm --filter @job-bot/database run seed"
+
+  # The worker is a task runner, not a service: it is started on demand with
+  #   docker compose run --rm worker discover
+  #   docker compose run --rm worker match --all-profiles
+  # rather than left running, so it does not fire off API calls unattended.
+  worker:
+    build: .
+    profiles: ["cli"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-jobbot}:${POSTGRES_PASSWORD:-jobbot}@db:5432/${POSTGRES_DB:-jobbot}?schema=public
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LLM_PROVIDER: ${LLM_PROVIDER:-anthropic}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-claude-opus-5}
+      LLM_MATCH_MODEL: ${LLM_MATCH_MODEL:-}
+    volumes:
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts
+    entrypoint: ["pnpm", "--filter", "@job-bot/worker", "start"]
+
+  web:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-jobbot}:${POSTGRES_PASSWORD:-jobbot}@db:5432/${POSTGRES_DB:-jobbot}?schema=public
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      NODE_ENV: development
+      DASHBOARD_PASSWORD: ${DASHBOARD_PASSWORD:-}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./apps:/app/apps
+      - ./packages:/app/packages
+      - ./data:/app/data:ro
+      # Anonymous volumes keep container-generated build output out of the
+      # host source tree — otherwise the container writes a root-owned .next
+      # that breaks host-side builds.
+      - /app/apps/web/.next
+      - /app/.turbo
+
+volumes:
+  db-data:

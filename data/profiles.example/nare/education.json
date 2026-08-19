@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "pluralsight-npm-scripts",
+    "institution": "Pluralsight",
+    "program": "Automating Node JS with NPM Scripts",
+    "kind": "COURSE",
+    "startDate": "2023-11-01",
+    "endDate": "2023-11-30",
+    "notes": null
+  },
+  {
+    "slug": "pluralsight-advanced-nodejs",
+    "institution": "Pluralsight",
+    "program": "Advanced Node JS: Worker Threads, Clustering, Web Sockets, Streams, OAuth 2",
+    "kind": "COURSE",
+    "startDate": "2023-10-01",
+    "endDate": "2023-12-31",
+    "notes": null
+  },
+  {
+    "slug": "pluralsight-software-architecture-microservices",
+    "institution": "Pluralsight",
+    "program": "Advanced Concepts in Software Architecture and Development: Microservices and Scalability",
+    "kind": "COURSE",
+    "startDate": "2023-09-01",
+    "endDate": "2023-09-30",
+    "notes": null
+  },
+  {
+    "slug": "pluralsight-graphql-apollo-server",
+    "institution": "Pluralsight",
+    "program": "Building scalable applications with GraphQL and Apollo Server",
+    "kind": "COURSE",
+    "startDate": "2023-07-01",
+    "endDate": "2023-08-31",
+    "notes": null
+  },
+  {
+    "slug": "toulouse-paul-sabatier-computer-science",
+    "institution": "Toulouse Paul Sabatier III University",
+    "program": "Computer Science",
+    "kind": "DEGREE",
+    "startDate": "2019-04-01",
+    "endDate": "2023-09-30",
+    "notes": null
+  },
+  {
+    "slug": "aitc-eif-web-programming",
+    "institution": "AITC, EIF",
+    "program": "Web Programming: HTML, CSS, Bootstrap, Advanced JavaScript, TypeScript",
+    "kind": "COURSE",
+    "startDate": "2018-11-01",
+    "endDate": "2019-04-30",
+    "notes": null
+  }
+]

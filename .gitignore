@@ -1,0 +1,50 @@
+# Dependencies and build output
+node_modules/
+.next/
+.next-build/
+dist/
+out/
+coverage/
+.turbo/
+*.tsbuildinfo
+
+# Secrets.
+#
+# Broad on purpose: the narrow form (.env, .env.local) misses exactly the
+# filenames people create while rotating a key — .env.backup, .env.old,
+# .env.prod — and one of those committed is a leaked credential.
+.env
+.env.*
+!.env.example
+
+# Run output: generated resumes, PDFs, screenshots, pipeline run logs.
+# These contain personal data and are reproducible from the database.
+artifacts/
+
+# Real profile data: names, emails, phone numbers, full employment history
+# for real people. data/profiles.example/ holds the same structure with
+# placeholder identities — copy it to data/profiles/ and fill it in.
+data/profiles/
+
+# Personal planning documents. These are about the author's career rather
+# than the software — a growth plan or portfolio brief with the identifying
+# details stripped out is neither private nor useful, so they stay local.
+docs/GROWTH.md
+docs/PORTFOLIO_PLAN.md
+docs/OPUS_PORTFOLIO_PROMPT.md
+
+# Test output
+test-results/
+playwright-report/
+blob-report/
+*.log
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local tool state
+.claude/settings.local.json

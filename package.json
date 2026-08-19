@@ -1,0 +1,42 @@
+{
+  "name": "job-bot",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@10.26.1",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:generate": "pnpm --filter @job-bot/database exec prisma generate",
+    "db:migrate": "pnpm --filter @job-bot/database exec prisma migrate dev",
+    "db:deploy": "pnpm --filter @job-bot/database exec prisma migrate deploy",
+    "db:seed": "pnpm --filter @job-bot/database run seed",
+    "db:studio": "pnpm --filter @job-bot/database exec prisma studio",
+    "db:reset": "pnpm --filter @job-bot/database exec prisma migrate reset",
+    "worker": "pnpm --filter @job-bot/worker start",
+    "discover": "pnpm --filter @job-bot/worker start discover",
+    "match": "pnpm --filter @job-bot/worker start match",
+    "prepare:apps": "pnpm --filter @job-bot/worker start prepare",
+    "fill": "pnpm --filter @job-bot/worker start fill",
+    "export": "pnpm --filter @job-bot/worker start export",
+    "db:seed:force": "pnpm --filter @job-bot/database run seed --force",
+    "submit": "pnpm --filter @job-bot/worker start submit",
+    "outcome": "pnpm --filter @job-bot/worker start outcome",
+    "outcomes": "pnpm --filter @job-bot/worker start outcomes",
+    "release": "pnpm --filter @job-bot/worker start release",
+    "sent": "pnpm --filter @job-bot/worker start sent"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

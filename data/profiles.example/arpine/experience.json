@@ -1,0 +1,159 @@
+[
+  {
+    "slug": "arpine-independent-trading-bot-research",
+    "company": "Independent Project",
+    "role": "Trading Bot & Market Data / ML Research",
+    "employmentType": "FREELANCE",
+    "location": "Remote",
+    "isRemote": true,
+    "startDate": "2023-11-01",
+    "endDate": null,
+    "isCurrent": true,
+    "description": "Self-directed trading bot and market data analysis project in Python, covering data pipelines, signal design, visualization and model testing.",
+    "technologies": [
+      "Python",
+      "pandas",
+      "NumPy",
+      "matplotlib",
+      "Time Series",
+      "Signal Analysis"
+    ],
+    "responsibilities": [
+      "Developed a personal trading bot and market data analysis project with Python, focusing on robust data pipelines and visualization",
+      "Conducted exploratory data analysis, designed signal logic, and performed model testing for trading strategies"
+    ],
+    "achievements": [
+      "Applied quantitative research methods and pattern recognition for data-driven decision-making",
+      "Demonstrated self-motivation, ownership, and continuous learning through independent project execution"
+    ],
+    "projects": []
+  },
+  {
+    "slug": "arpine-sentra-ml-engineer",
+    "company": "Sentra",
+    "role": "ML Engineer — Anima 3D volumetric display",
+    "employmentType": "FULL_TIME",
+    "location": "Yerevan, Armenia",
+    "isRemote": false,
+    "startDate": "2026-03-01",
+    "endDate": "2026-08-31",
+    "isCurrent": false,
+    "description": "Point cloud processing and voxel rendering for a 3D volumetric display, working across hardware, software and product teams.",
+    "technologies": [
+      "Python",
+      "Point Cloud Processing",
+      "Machine Learning",
+      "Computer Vision"
+    ],
+    "responsibilities": [
+      "Developed and optimized point cloud processing pipelines, enabling accurate and visually compelling real-time rendering",
+      "Worked cross-functionally with hardware, software, and product teams to translate technical requirements into scalable solutions for next-generation display technology"
+    ],
+    "achievements": [
+      "Introduced AI-driven automation to streamline data handling and display operations, contributing to system performance and reliability",
+      "Conducted machine learning experiments targeting voxel rendering optimization, including analysis of computational trade-offs and visualization quality"
+    ],
+    "projects": []
+  },
+  {
+    "slug": "arpine-executive-ai-workflow-automation",
+    "company": "Executive",
+    "role": "ML Engineer — AI Workflow Automation Project",
+    "employmentType": "FULL_TIME",
+    "location": "Yerevan, Armenia",
+    "isRemote": false,
+    "startDate": "2025-07-01",
+    "endDate": "2026-04-30",
+    "isCurrent": false,
+    "description": "End-to-end AI workflow automation: modular pipelines over Google Workspace, Qdrant and OpenAI, orchestrated in n8n.",
+    "technologies": [
+      "Python",
+      "Google Workspace",
+      "Qdrant",
+      "OpenAI API",
+      "n8n"
+    ],
+    "responsibilities": [
+      "Led end-to-end AI workflow automation projects, translating business needs into robust technical solutions",
+      "Built modular pipelines utilizing Google Workspace, Qdrant, and OpenAI for structured data management and output generation"
+    ],
+    "achievements": [
+      "Designed and implemented automation workflows in n8n, optimizing business processes and iterative system improvements"
+    ],
+    "projects": []
+  },
+  {
+    "slug": "arpine-davinci-engineering-ml-engineer",
+    "company": "Davinci Engineering",
+    "role": "ML Engineer",
+    "employmentType": "FULL_TIME",
+    "location": "Yerevan, Armenia",
+    "isRemote": false,
+    "startDate": "2022-12-01",
+    "endDate": "2023-06-30",
+    "isCurrent": false,
+    "description": "Statistical analysis of large datasets and retraining of machine learning models for organization-specific tasks.",
+    "technologies": [
+      "Python",
+      "scikit-learn",
+      "pandas",
+      "Statistical Analysis",
+      "SQL"
+    ],
+    "responsibilities": [
+      "Analyzed large datasets using advanced statistical methods to extract actionable insights",
+      "Retrained and customized machine learning models for organization-specific tasks",
+      "Maintained and reviewed codebases, collaborating with engineering teams to troubleshoot and optimize code"
+    ],
+    "achievements": [
+      "Communicated findings and technical concepts clearly to both technical and non-technical stakeholders"
+    ],
+    "projects": []
+  },
+  {
+    "slug": "arpine-pixeria-lab-3d-data-intern",
+    "company": "Pixeria Lab",
+    "role": "3D Data Processing Intern",
+    "employmentType": "INTERNSHIP",
+    "location": "Yerevan, Armenia",
+    "isRemote": false,
+    "startDate": "2022-04-01",
+    "endDate": "2022-07-31",
+    "isCurrent": false,
+    "description": "Spatial data processing, including point clouds, for visualization and downstream machine learning applications.",
+    "technologies": [
+      "Python",
+      "Point Cloud Processing",
+      "Computer Vision"
+    ],
+    "responsibilities": [
+      "Processed and analyzed spatial data, including point clouds, for visualization and further ML applications",
+      "Collaborated in team-based research and development"
+    ],
+    "achievements": [],
+    "projects": []
+  },
+  {
+    "slug": "arpine-mathemat-ml-engineer",
+    "company": "Mathemat",
+    "role": "ML Engineer",
+    "employmentType": "FULL_TIME",
+    "location": "Yerevan, Armenia",
+    "isRemote": false,
+    "startDate": "2021-06-01",
+    "endDate": "2021-11-30",
+    "isCurrent": false,
+    "description": "Recommendation system development for a vehicle platform, including algorithm research, model evaluation and tuning.",
+    "technologies": [
+      "Python",
+      "scikit-learn",
+      "Machine Learning"
+    ],
+    "responsibilities": [
+      "Supported the development of a recommendation system for a vehicle platform",
+      "Conducted research on suitable machine learning algorithms and participated in model evaluation and tuning"
+    ],
+    "achievements": [],
+    "projects": []
+  }
+]

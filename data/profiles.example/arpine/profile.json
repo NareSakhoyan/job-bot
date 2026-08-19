@@ -1,0 +1,171 @@
+{
+  "slug": "arpine",
+  "fullName": "Grace Hopper",
+  "email": "grace.hopper@example.com",
+  "phone": "+374 00 00 00 00",
+  "location": "Yerevan, Armenia",
+  "headline": "ML Engineer",
+  "summary": "Analytical and results-driven Machine Learning Engineer with proficiency in data analysis, model experimentation, and research-based problem-solving. Experienced in developing recommendation systems, computer vision solutions, workflow automation, and independent market data research. Eager to contribute to AI-driven teams in quantitative research and applied data science roles, with a commitment to ethical, AI-free methodology.",
+  "yearsOfExperience": 4,
+  "targetRoles": [
+    "Machine Learning Engineer",
+    "ML Engineer",
+    "Data Scientist",
+    "Quantitative Researcher",
+    "Applied Data Scientist",
+    "Computer Vision Engineer"
+  ],
+  "skills": [
+    {
+      "name": "Exploratory Data Analysis",
+      "category": "Data Science",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    },
+    {
+      "name": "Feature Engineering",
+      "category": "Data Science",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    },
+    {
+      "name": "Git",
+      "category": "Tooling",
+      "level": "INTERMEDIATE",
+      "yearsUsed": null
+    },
+    {
+      "name": "Google Workspace",
+      "category": "Tooling",
+      "level": "INTERMEDIATE",
+      "yearsUsed": null
+    },
+    {
+      "name": "Jupyter Notebook",
+      "category": "Tooling",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    },
+    {
+      "name": "Model Evaluation",
+      "category": "Machine Learning",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    },
+    {
+      "name": "NumPy",
+      "category": "Data",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    },
+    {
+      "name": "OpenAI API",
+      "category": "AI",
+      "level": "INTERMEDIATE",
+      "yearsUsed": null
+    },
+    {
+      "name": "OpenCV",
+      "category": "Machine Learning",
+      "level": "INTERMEDIATE",
+      "yearsUsed": null
+    },
+    {
+      "name": "Point Cloud Processing",
+      "category": "Computer Vision",
+      "level": "INTERMEDIATE",
+      "yearsUsed": null
+    },
+    {
+      "name": "Python",
+      "category": "Language",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    },
+    {
+      "name": "Qdrant",
+      "category": "Data",
+      "level": "INTERMEDIATE",
+      "yearsUsed": null
+    },
+    {
+      "name": "SQL",
+      "category": "Language",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    },
+    {
+      "name": "Signal Analysis",
+      "category": "Quantitative Research",
+      "level": "INTERMEDIATE",
+      "yearsUsed": null
+    },
+    {
+      "name": "Statistical Analysis",
+      "category": "Data Science",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    },
+    {
+      "name": "Time Series",
+      "category": "Quantitative Research",
+      "level": "INTERMEDIATE",
+      "yearsUsed": null
+    },
+    {
+      "name": "matplotlib",
+      "category": "Data",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    },
+    {
+      "name": "n8n",
+      "category": "Tooling",
+      "level": "INTERMEDIATE",
+      "yearsUsed": null
+    },
+    {
+      "name": "pandas",
+      "category": "Data",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    },
+    {
+      "name": "scikit-learn",
+      "category": "Machine Learning",
+      "level": "ADVANCED",
+      "yearsUsed": null
+    }
+  ],
+  "preferredLocations": [
+    "Remote",
+    "Yerevan"
+  ],
+  "remotePreference": "FLEXIBLE",
+  "salaryExpectation": {
+    "min": null,
+    "max": null,
+    "currency": "USD",
+    "period": "YEAR"
+  },
+  "employmentTypes": [
+    "FULL_TIME",
+    "CONTRACT"
+  ],
+  "industries": [],
+  "excludedCompanies": [],
+  "excludedTechnologies": [],
+  "workAuthorization": {
+    "country": "Armenia",
+    "status": "CITIZEN",
+    "requiresSponsorship": true,
+    "notes": "NOT YET CONFIRMED — remote work is unrestricted; confirm status and sponsorship for on-site roles."
+  },
+  "links": {
+    "github": null,
+    "linkedin": "https://www.linkedin.com/in/arp",
+    "website": null
+  },
+  "githubUrl": "https://github.com/example-grace",
+  "linkedinUrl": "https://linkedin.com/in/example-grace"
+}

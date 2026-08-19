@@ -1,0 +1,82 @@
+[
+  {
+    "board": "linear",
+    "company": "Linear"
+  },
+  {
+    "board": "ramp",
+    "company": "Ramp"
+  },
+  {
+    "board": "vanta",
+    "company": "Vanta"
+  },
+  {
+    "board": "replit",
+    "company": "Replit"
+  },
+  {
+    "board": "deel",
+    "company": "Deel"
+  },
+  {
+    "board": "langfuse",
+    "company": "Langfuse"
+  },
+  {
+    "board": "n8n",
+    "company": "n8n"
+  },
+  {
+    "board": "tacto",
+    "company": "Tacto"
+  },
+  {
+    "board": "plain",
+    "company": "Plain"
+  },
+  {
+    "board": "resend",
+    "company": "Resend"
+  },
+  {
+    "board": "forto",
+    "company": "Forto"
+  },
+  {
+    "board": "docker",
+    "company": "Docker"
+  },
+  {
+    "board": "zapier",
+    "company": "Zapier"
+  },
+  {
+    "board": "ghost",
+    "company": "Ghost"
+  },
+  {
+    "board": "close",
+    "company": "Close"
+  },
+  {
+    "board": "supabase",
+    "company": "Supabase"
+  },
+  {
+    "board": "posthog",
+    "company": "PostHog"
+  },
+  {
+    "board": "parity",
+    "company": "Parity"
+  },
+  {
+    "board": "andela",
+    "company": "Andela"
+  },
+  {
+    "board": "braintrust",
+    "company": "Braintrust"
+  }
+]
