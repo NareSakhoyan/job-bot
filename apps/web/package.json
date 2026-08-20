@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
-    "start": "next start --port 3000",
+    "start": "next start --port ${PORT:-3000}",
     "typecheck": "tsc -p tsconfig.json",
     "build:isolated": "NEXT_DIST_DIR=.next-build next build",
-    "start:isolated": "NEXT_DIST_DIR=.next-build next start --port 3000"
+    "start:isolated": "NEXT_DIST_DIR=.next-build next start --port ${PORT:-3000}"
   },
   "dependencies": {
     "@job-bot/database": "workspace:*",

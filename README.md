@@ -296,6 +296,8 @@ every source a posting was seen on.
 | Command | Purpose |
 | --- | --- |
 | `pnpm dev` | Run the dashboard |
+| `pnpm build` | Compile the dashboard to `.next` |
+| `pnpm start` | Serve the compiled dashboard, honouring `PORT` |
 | `pnpm build` | Production build |
 | `pnpm typecheck` | Typecheck every package |
 | `pnpm test` | Run the test suite |
