@@ -1,0 +1,945 @@
+[
+  {
+    "source": "mock",
+    "externalId": "mock-1001",
+    "url": "https://mock.example.com/jobs/mock-1001",
+    "company": "Northwind Systems Inc.",
+    "title": "Senior Backend Engineer (TypeScript)",
+    "location": "Remote — Europe",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 110000,
+      "max": 145000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Northwind Systems builds observability tooling for distributed systems. We are looking for a senior backend engineer to own our ingestion pipeline, which processes several billion events per day.\n\nYou will work in TypeScript on Node.js services backed by PostgreSQL and ClickHouse, deployed to Kubernetes. The team is fully remote across European time zones.",
+    "requirements": [
+      "5+ years building backend services in production",
+      "Deep TypeScript and Node.js experience",
+      "Strong SQL and relational data modelling",
+      "Experience operating services on Kubernetes"
+    ],
+    "responsibilities": [
+      "Own the design and reliability of the event ingestion pipeline",
+      "Improve query performance across the analytics tier",
+      "Participate in a follow-the-sun on-call rotation"
+    ],
+    "technologies": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "ClickHouse",
+      "Kubernetes",
+      "Docker"
+    ],
+    "postedAt": "2026-08-15T00:00:00Z"
+  },
+  {
+    "source": "mock-aggregator",
+    "externalId": "agg-77201",
+    "url": "https://mock-aggregator.example.com/jobs/agg-77201",
+    "company": "Northwind Systems",
+    "title": "Senior Backend Engineer, TypeScript (Remote)",
+    "location": "Remote",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 110000,
+      "max": 145000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Senior backend engineer wanted at Northwind Systems to own a high-throughput event ingestion pipeline built in TypeScript on Node.js, PostgreSQL and ClickHouse, running on Kubernetes. Fully remote across Europe.",
+    "requirements": [
+      "5+ years of backend engineering",
+      "TypeScript / Node.js",
+      "Kubernetes"
+    ],
+    "responsibilities": [
+      "Own event ingestion",
+      "Improve analytics query performance"
+    ],
+    "technologies": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "ClickHouse",
+      "Kubernetes"
+    ],
+    "postedAt": "2026-08-16T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1002",
+    "url": "https://mock.example.com/jobs/mock-1002",
+    "company": "Halcyon Data GmbH",
+    "title": "Staff Software Engineer, Platform",
+    "location": "Berlin, Germany",
+    "isRemote": false,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 95000,
+      "max": 125000,
+      "currency": "EUR",
+      "period": "YEAR"
+    },
+    "description": "Halcyon Data is hiring a staff engineer to lead our internal developer platform. You will define the golden path for roughly forty engineers: build tooling, CI/CD, environment provisioning and service templates.\n\nThis role is based in our Berlin office with two days per week on site. We sponsor work visas for candidates relocating to Germany.",
+    "requirements": [
+      "8+ years of software engineering experience",
+      "Proven ownership of developer platform or infrastructure work",
+      "Terraform and Kubernetes in production",
+      "Experience mentoring senior engineers"
+    ],
+    "responsibilities": [
+      "Define and evolve the internal developer platform",
+      "Own CI/CD tooling and build performance",
+      "Partner with product teams on adoption"
+    ],
+    "technologies": [
+      "Go",
+      "Terraform",
+      "Kubernetes",
+      "Docker",
+      "CI/CD",
+      "PostgreSQL"
+    ],
+    "postedAt": "2026-08-09T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1003",
+    "url": "https://mock.example.com/jobs/mock-1003",
+    "company": "Bright Orbit",
+    "title": "Full-Stack Engineer (React / Node)",
+    "location": "Remote — Worldwide",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 85000,
+      "max": 115000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Bright Orbit builds scheduling software for field service teams. We are a twelve-person, fully distributed company. You will work across a Next.js frontend and a Node.js backend with PostgreSQL and Prisma.\n\nWe value engineers who can take a vague problem, talk to customers, and ship a working solution.",
+    "requirements": [
+      "4+ years of full-stack product engineering",
+      "Strong React and TypeScript",
+      "Comfortable owning features end to end",
+      "Experience with PostgreSQL"
+    ],
+    "responsibilities": [
+      "Ship customer-facing features across the stack",
+      "Talk directly to customers about their workflows",
+      "Keep the codebase maintainable as the team grows"
+    ],
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "Prisma"
+    ],
+    "postedAt": "2026-08-13T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1004",
+    "url": "https://mock.example.com/jobs/mock-1004",
+    "company": "Vantage Payments Ltd",
+    "title": "Senior Software Engineer, Payments",
+    "location": "London, United Kingdom",
+    "isRemote": false,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 90000,
+      "max": 120000,
+      "currency": "GBP",
+      "period": "YEAR"
+    },
+    "description": "Vantage Payments processes card and account-to-account payments for European merchants. We need a senior engineer for the core payments team, working on authorisation, settlement and reconciliation.\n\nThis is a hybrid role, three days per week in our London office. We are unable to sponsor visas for this position.",
+    "requirements": [
+      "5+ years backend engineering in a regulated environment",
+      "Java or Kotlin in production",
+      "Strong understanding of transactional correctness and idempotency",
+      "Right to work in the UK — we cannot sponsor"
+    ],
+    "responsibilities": [
+      "Build and operate payment authorisation services",
+      "Own reconciliation correctness",
+      "Support incident response for payment flows"
+    ],
+    "technologies": [
+      "Java",
+      "Kotlin",
+      "PostgreSQL",
+      "Kafka",
+      "AWS"
+    ],
+    "postedAt": "2026-08-06T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1005",
+    "url": "https://mock.example.com/jobs/mock-1005",
+    "company": "Ferrous AI",
+    "title": "Senior Engineer, Developer Experience",
+    "location": "Remote — US & EU",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 130000,
+      "max": 170000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Ferrous AI builds inference infrastructure. We are hiring a senior engineer for developer experience: our SDKs, CLI, documentation tooling and example applications.\n\nYou will write TypeScript and Python, and you will care a lot about the first fifteen minutes a developer spends with a product.",
+    "requirements": [
+      "5+ years of engineering experience",
+      "Excellent TypeScript; working Python",
+      "Have built and maintained a public SDK or CLI",
+      "Strong written communication"
+    ],
+    "responsibilities": [
+      "Own the TypeScript and Python SDKs",
+      "Improve onboarding and documentation tooling",
+      "Represent developer feedback to the platform team"
+    ],
+    "technologies": [
+      "TypeScript",
+      "Python",
+      "Node.js",
+      "Docker",
+      "REST"
+    ],
+    "postedAt": "2026-08-17T00:00:00Z"
+  },
+  {
+    "source": "mock-aggregator",
+    "externalId": "agg-77455",
+    "url": "https://mock-aggregator.example.com/jobs/agg-77455",
+    "company": "Ferrous AI, Inc.",
+    "title": "Senior Engineer — Developer Experience (Remote)",
+    "location": "Remote (US/EU)",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 130000,
+      "max": 170000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Ferrous AI is hiring a senior developer experience engineer to own our TypeScript and Python SDKs, CLI and documentation tooling. Remote across US and EU time zones.",
+    "requirements": [
+      "5+ years engineering",
+      "TypeScript and Python",
+      "Public SDK or CLI experience"
+    ],
+    "responsibilities": [
+      "Own SDKs",
+      "Improve developer onboarding"
+    ],
+    "technologies": [
+      "TypeScript",
+      "Python",
+      "Node.js",
+      "REST"
+    ],
+    "postedAt": "2026-08-17T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1006",
+    "url": "https://mock.example.com/jobs/mock-1006",
+    "company": "Cedar & Bloom",
+    "title": "WordPress Developer",
+    "location": "Remote",
+    "isRemote": true,
+    "employmentType": "CONTRACT",
+    "salary": {
+      "min": 40000,
+      "max": 60000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Cedar & Bloom is a boutique agency building marketing sites for lifestyle brands. We need a WordPress developer to build and maintain custom themes and plugins in PHP.",
+    "requirements": [
+      "3+ years of WordPress and PHP",
+      "Custom theme and plugin development",
+      "Basic JavaScript"
+    ],
+    "responsibilities": [
+      "Build custom WordPress themes",
+      "Maintain client plugins"
+    ],
+    "technologies": [
+      "PHP",
+      "WordPress",
+      "JavaScript",
+      "MySQL"
+    ],
+    "postedAt": "2026-08-11T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1007",
+    "url": "https://mock.example.com/jobs/mock-1007",
+    "company": "Placeholder Excluded Corp",
+    "title": "Senior Full-Stack Engineer",
+    "location": "Remote",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 120000,
+      "max": 150000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "A well-compensated senior full-stack role working in TypeScript, React and Node.js on a large consumer product. This posting exists in the fixture to exercise the excludedCompanies filter — the company name matches the exclusion list in the placeholder profile.",
+    "requirements": [
+      "5+ years full-stack engineering",
+      "TypeScript and React",
+      "Node.js and PostgreSQL"
+    ],
+    "responsibilities": [
+      "Ship consumer-facing features",
+      "Own service reliability"
+    ],
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "PostgreSQL"
+    ],
+    "postedAt": "2026-08-14T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1008",
+    "url": "https://mock.example.com/jobs/mock-1008",
+    "company": "Meridian Health",
+    "title": "Backend Engineer (Python)",
+    "location": "Amsterdam, Netherlands",
+    "isRemote": false,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 70000,
+      "max": 90000,
+      "currency": "EUR",
+      "period": "YEAR"
+    },
+    "description": "Meridian Health builds clinical data infrastructure for European hospital groups. We are hiring a backend engineer to work on our FHIR ingestion services in Python.\n\nHybrid, two days per week in Amsterdam. Visa sponsorship and relocation support available.",
+    "requirements": [
+      "3+ years Python backend experience",
+      "Django or FastAPI in production",
+      "Interest in healthcare data standards",
+      "Comfortable with PostgreSQL"
+    ],
+    "responsibilities": [
+      "Build and maintain FHIR ingestion pipelines",
+      "Work with clinical partners on data quality",
+      "Own service monitoring for your components"
+    ],
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes"
+    ],
+    "postedAt": "2026-08-03T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1009",
+    "url": "https://mock.example.com/jobs/mock-1009",
+    "company": "Kestrel Logistics",
+    "title": "Software Engineer II",
+    "location": "Yerevan, Armenia",
+    "isRemote": false,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 35000,
+      "max": 50000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Kestrel Logistics builds freight-forwarding software. We are hiring a mid-level engineer for our Yerevan office to work on our TypeScript backend and internal tooling.",
+    "requirements": [
+      "2+ years of professional software engineering",
+      "JavaScript or TypeScript",
+      "Willingness to work from our Yerevan office"
+    ],
+    "responsibilities": [
+      "Build features on the shipment tracking backend",
+      "Maintain internal operations tooling"
+    ],
+    "technologies": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "React"
+    ],
+    "postedAt": "2026-07-29T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1010",
+    "url": "https://mock.example.com/jobs/mock-1010",
+    "company": "Atlas Retail Group",
+    "title": "Principal Engineer, Commerce Platform",
+    "location": "Remote — Europe",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 150000,
+      "max": 190000,
+      "currency": "EUR",
+      "period": "YEAR"
+    },
+    "description": "Atlas Retail Group operates commerce platforms for several European retail brands. We are hiring a principal engineer to set technical direction across five product teams.\n\nThis is a hands-on architecture role: you will write code, but your primary output is technical strategy and the decisions that unblock other teams.",
+    "requirements": [
+      "10+ years of engineering experience",
+      "Track record setting technical direction across multiple teams",
+      "Deep distributed systems knowledge",
+      "Experience with high-traffic commerce systems"
+    ],
+    "responsibilities": [
+      "Set architectural direction for the commerce platform",
+      "Lead design reviews across five teams",
+      "Drive the migration away from the legacy monolith"
+    ],
+    "technologies": [
+      "Java",
+      "Kafka",
+      "Kubernetes",
+      "AWS",
+      "PostgreSQL"
+    ],
+    "postedAt": "2026-08-12T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1011",
+    "url": "https://mock.example.com/jobs/mock-1011",
+    "company": "Lumen Docs",
+    "title": "Frontend Engineer",
+    "location": "Remote — Worldwide",
+    "isRemote": true,
+    "employmentType": "CONTRACT",
+    "salary": null,
+    "description": "Lumen Docs builds a collaborative document editor. We are looking for a contract frontend engineer for a six-month engagement to help ship our new editing surface in React.\n\nNo salary range is published for this posting — rate is negotiated per engagement.",
+    "requirements": [
+      "4+ years frontend engineering",
+      "Deep React experience",
+      "Comfortable with complex state management"
+    ],
+    "responsibilities": [
+      "Ship the new editing surface",
+      "Improve rendering performance for large documents"
+    ],
+    "technologies": [
+      "React",
+      "TypeScript",
+      "JavaScript"
+    ],
+    "postedAt": "2026-08-10T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1012",
+    "url": "https://mock.example.com/jobs/mock-1012",
+    "company": "Sentinel Security",
+    "title": "Senior Platform Engineer",
+    "location": "Remote — Europe",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 100000,
+      "max": 130000,
+      "currency": "EUR",
+      "period": "YEAR"
+    },
+    "description": "Sentinel Security provides managed detection and response. We are hiring a senior platform engineer to own our Terraform estate, Kubernetes clusters and CI/CD tooling across three cloud providers.",
+    "requirements": [
+      "5+ years in platform or infrastructure engineering",
+      "Terraform at scale",
+      "Kubernetes operations experience",
+      "Scripting in Go or Python"
+    ],
+    "responsibilities": [
+      "Own infrastructure as code across three clouds",
+      "Improve deployment safety and rollback",
+      "Reduce cloud spend without reducing reliability"
+    ],
+    "technologies": [
+      "Terraform",
+      "Kubernetes",
+      "Go",
+      "Docker",
+      "Google Cloud Platform",
+      "AWS"
+    ],
+    "postedAt": "2026-08-07T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1013",
+    "url": "https://mock.example.com/jobs/mock-1013",
+    "company": "Quill Analytics",
+    "title": "Senior Software Engineer (Data Platform)",
+    "location": "Remote — Europe",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 105000,
+      "max": 135000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Quill Analytics builds product analytics for B2B SaaS companies. We are hiring a senior engineer for the data platform team, working in TypeScript and Python on our ingestion and query layers backed by PostgreSQL and ClickHouse.",
+    "requirements": [
+      "5+ years backend engineering",
+      "TypeScript and Python",
+      "Experience with analytical query workloads",
+      "Strong PostgreSQL"
+    ],
+    "responsibilities": [
+      "Own the ingestion and transformation layers",
+      "Improve query latency for large customer datasets",
+      "Design schema evolution for multi-tenant data"
+    ],
+    "technologies": [
+      "TypeScript",
+      "Python",
+      "PostgreSQL",
+      "ClickHouse",
+      "Docker",
+      "Node.js"
+    ],
+    "postedAt": "2026-08-14T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1014",
+    "url": "https://mock.example.com/jobs/mock-1014",
+    "company": "Junipero Mobile",
+    "title": "Mobile Engineer (React Native)",
+    "location": "Remote — Americas",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 95000,
+      "max": 125000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Junipero Mobile builds white-label mobile applications for credit unions. We are hiring a React Native engineer to work across iOS and Android.",
+    "requirements": [
+      "4+ years mobile engineering",
+      "React Native in production",
+      "Native module experience on iOS or Android"
+    ],
+    "responsibilities": [
+      "Ship features across iOS and Android",
+      "Own release engineering for mobile builds"
+    ],
+    "technologies": [
+      "React Native",
+      "TypeScript",
+      "JavaScript",
+      "iOS",
+      "Android"
+    ],
+    "postedAt": "2026-08-08T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1015",
+    "url": "https://mock.example.com/jobs/mock-1015",
+    "company": "Oakford Consulting",
+    "title": "Software Engineering Intern",
+    "location": "Berlin, Germany",
+    "isRemote": false,
+    "employmentType": "INTERNSHIP",
+    "salary": {
+      "min": 24000,
+      "max": 30000,
+      "currency": "EUR",
+      "period": "YEAR"
+    },
+    "description": "Oakford Consulting is offering a six-month engineering internship in Berlin. You will work alongside a senior engineer on internal tooling in TypeScript.",
+    "requirements": [
+      "Currently enrolled in a degree programme",
+      "Some programming experience",
+      "Available for six months"
+    ],
+    "responsibilities": [
+      "Contribute to internal tooling",
+      "Pair with senior engineers"
+    ],
+    "technologies": [
+      "TypeScript",
+      "Node.js",
+      "React"
+    ],
+    "postedAt": "2026-08-04T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1016",
+    "url": "https://mock.example.com/jobs/mock-1016",
+    "company": "Beacon Trading Systems",
+    "title": "Senior Engineer, Low Latency",
+    "location": "Remote — Europe",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 140000,
+      "max": 200000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Beacon Trading Systems builds execution infrastructure for proprietary trading firms. We are hiring a senior engineer for our low-latency execution path, written primarily in C++ with Rust components.",
+    "requirements": [
+      "5+ years systems programming",
+      "Modern C++ or Rust in production",
+      "Experience with latency profiling and optimisation",
+      "Comfortable with lock-free concurrency"
+    ],
+    "responsibilities": [
+      "Optimise the order execution hot path",
+      "Own latency benchmarking infrastructure"
+    ],
+    "technologies": [
+      "C++",
+      "Rust",
+      "Linux",
+      "Kafka"
+    ],
+    "postedAt": "2026-08-05T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-1017",
+    "url": "https://mock.example.com/jobs/mock-1017",
+    "company": "Willowbrook Systems",
+    "title": "Engineering Manager, Backend",
+    "location": "Remote — Europe",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 120000,
+      "max": 155000,
+      "currency": "EUR",
+      "period": "YEAR"
+    },
+    "description": "Willowbrook Systems is hiring an engineering manager for two backend teams (eleven engineers total). This is a people-leadership role: hiring, growth, delivery and technical direction. Expect roughly 20% hands-on coding.",
+    "requirements": [
+      "2+ years managing engineers",
+      "Prior senior engineering experience",
+      "Backend systems background"
+    ],
+    "responsibilities": [
+      "Lead two backend teams",
+      "Own hiring and performance growth",
+      "Partner with product on roadmap"
+    ],
+    "technologies": [
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Kubernetes"
+    ],
+    "postedAt": "2026-07-31T00:00:00Z"
+  },
+  {
+    "source": "mock-aggregator",
+    "externalId": "agg-77890",
+    "url": "https://mock-aggregator.example.com/jobs/agg-77890",
+    "company": "Bright Orbit LLC",
+    "title": "Full Stack Engineer (React/Node)",
+    "location": "Remote",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 85000,
+      "max": 115000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Bright Orbit, a twelve-person distributed team building field service scheduling software, is hiring a full-stack engineer for its Next.js and Node.js stack with PostgreSQL and Prisma.",
+    "requirements": [
+      "4+ years full-stack",
+      "React and TypeScript",
+      "PostgreSQL"
+    ],
+    "responsibilities": [
+      "Ship customer-facing features",
+      "Own features end to end"
+    ],
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "Prisma"
+    ],
+    "postedAt": "2026-08-13T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-2001",
+    "url": "https://mock.example.com/jobs/mock-2001",
+    "company": "Helio Analytics",
+    "title": "Machine Learning Engineer",
+    "location": "Remote — Europe",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 80000,
+      "max": 110000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Helio Analytics builds forecasting products for energy traders. We are hiring an ML engineer to own model development end to end: feature engineering, training, evaluation and the pipelines that keep them fed.\n\nThe stack is Python throughout, with pandas and scikit-learn for modelling and PostgreSQL behind the feature store.",
+    "requirements": [
+      "3+ years building and evaluating machine learning models in production",
+      "Strong Python, pandas and NumPy",
+      "Solid grounding in statistics and model evaluation",
+      "Comfortable writing SQL against large tables"
+    ],
+    "responsibilities": [
+      "Own feature engineering and model evaluation for the forecasting suite",
+      "Build and maintain training and inference pipelines",
+      "Communicate model behaviour to non-technical stakeholders"
+    ],
+    "technologies": [
+      "Python",
+      "pandas",
+      "NumPy",
+      "scikit-learn",
+      "SQL",
+      "PostgreSQL",
+      "Statistical Analysis",
+      "Model Evaluation"
+    ],
+    "postedAt": "2026-08-16T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-2002",
+    "url": "https://mock.example.com/jobs/mock-2002",
+    "company": "Thornbury Capital",
+    "title": "Quantitative Researcher (Market Data)",
+    "location": "Remote — Worldwide",
+    "isRemote": true,
+    "employmentType": "CONTRACT",
+    "salary": null,
+    "description": "Thornbury Capital is a small systematic trading group. We are looking for a quantitative researcher to work on market data pipelines, signal design and strategy backtesting.\n\nThis is research work: exploratory data analysis, hypothesis testing, and a lot of care about whether a result is real. Python, pandas and a strong statistics background matter more than any particular framework.",
+    "requirements": [
+      "Demonstrated quantitative research experience, professional or independent",
+      "Python with pandas and NumPy",
+      "Time series and signal analysis",
+      "Rigour about overfitting and out-of-sample testing"
+    ],
+    "responsibilities": [
+      "Build and maintain market data pipelines",
+      "Design and test trading signals",
+      "Document research findings clearly"
+    ],
+    "technologies": [
+      "Python",
+      "pandas",
+      "NumPy",
+      "matplotlib",
+      "Time Series",
+      "Signal Analysis",
+      "Statistical Analysis"
+    ],
+    "postedAt": "2026-08-14T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-2003",
+    "url": "https://mock.example.com/jobs/mock-2003",
+    "company": "Verity Vision",
+    "title": "Computer Vision Engineer",
+    "location": "Yerevan, Armenia",
+    "isRemote": false,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 45000,
+      "max": 65000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Verity Vision builds inspection systems for manufacturing lines. We are hiring a computer vision engineer to work on defect detection and 3D measurement from point cloud data.\n\nOur team is in Yerevan, hybrid three days a week.",
+    "requirements": [
+      "Computer vision experience with OpenCV or equivalent",
+      "Python and NumPy",
+      "Exposure to point cloud or spatial data processing",
+      "Model evaluation and experiment design"
+    ],
+    "responsibilities": [
+      "Develop defect detection models for production inspection",
+      "Process and analyse point cloud data",
+      "Run experiments and report on trade-offs"
+    ],
+    "technologies": [
+      "Python",
+      "OpenCV",
+      "NumPy",
+      "Point Cloud Processing",
+      "Computer Vision",
+      "scikit-learn"
+    ],
+    "postedAt": "2026-08-12T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-2004",
+    "url": "https://mock.example.com/jobs/mock-2004",
+    "company": "Loomis Data",
+    "title": "Senior Data Scientist",
+    "location": "Remote — Europe",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 90000,
+      "max": 125000,
+      "currency": "EUR",
+      "period": "YEAR"
+    },
+    "description": "Loomis Data provides analytics to European retailers. We are hiring a senior data scientist to own recommendation and demand forecasting models, working closely with the engineering team that ships them.",
+    "requirements": [
+      "5+ years in data science or applied ML",
+      "Recommendation systems or forecasting experience",
+      "Python, pandas, scikit-learn",
+      "Strong SQL and feature engineering"
+    ],
+    "responsibilities": [
+      "Own the recommendation and forecasting model portfolio",
+      "Design offline and online evaluation",
+      "Partner with engineering on productionisation"
+    ],
+    "technologies": [
+      "Python",
+      "pandas",
+      "scikit-learn",
+      "SQL",
+      "Feature Engineering",
+      "Model Evaluation",
+      "Statistical Analysis"
+    ],
+    "postedAt": "2026-08-10T00:00:00Z"
+  },
+  {
+    "source": "mock-aggregator",
+    "externalId": "agg-88010",
+    "url": "https://mock-aggregator.example.com/jobs/agg-88010",
+    "company": "Helio Analytics Ltd",
+    "title": "ML Engineer (Remote, Europe)",
+    "location": "Remote",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 80000,
+      "max": 110000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Helio Analytics is hiring a machine learning engineer for its energy forecasting products — feature engineering, model evaluation and training pipelines in Python, pandas and scikit-learn over PostgreSQL.",
+    "requirements": [
+      "3+ years production ML",
+      "Python, pandas",
+      "SQL"
+    ],
+    "responsibilities": [
+      "Own feature engineering and evaluation",
+      "Maintain training pipelines"
+    ],
+    "technologies": [
+      "Python",
+      "pandas",
+      "scikit-learn",
+      "SQL",
+      "PostgreSQL"
+    ],
+    "postedAt": "2026-08-16T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-2005",
+    "url": "https://mock.example.com/jobs/mock-2005",
+    "company": "Cobalt Robotics Systems",
+    "title": "Research Engineer, Deep Learning",
+    "location": "Remote — US",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 140000,
+      "max": 180000,
+      "currency": "USD",
+      "period": "YEAR"
+    },
+    "description": "Cobalt Robotics Systems is hiring a research engineer for perception. You will train and deploy deep learning models on large-scale sensor data, working primarily in PyTorch on multi-GPU infrastructure.",
+    "requirements": [
+      "PhD or equivalent research experience in deep learning",
+      "PyTorch at scale, multi-GPU training",
+      "Published work in perception or robotics",
+      "CUDA familiarity"
+    ],
+    "responsibilities": [
+      "Train perception models on large sensor datasets",
+      "Own the research-to-production path"
+    ],
+    "technologies": [
+      "PyTorch",
+      "CUDA",
+      "Deep Learning",
+      "C++",
+      "ROS"
+    ],
+    "postedAt": "2026-08-07T00:00:00Z"
+  },
+  {
+    "source": "mock",
+    "externalId": "mock-2006",
+    "url": "https://mock.example.com/jobs/mock-2006",
+    "company": "Aster Health Data",
+    "title": "Data Engineer",
+    "location": "Remote — Europe",
+    "isRemote": true,
+    "employmentType": "FULL_TIME",
+    "salary": {
+      "min": 70000,
+      "max": 95000,
+      "currency": "EUR",
+      "period": "YEAR"
+    },
+    "description": "Aster Health Data builds the data platform behind clinical analytics products. We are hiring a data engineer to own ingestion, transformation and data quality across a Postgres and Airflow stack.",
+    "requirements": [
+      "3+ years data engineering",
+      "Strong SQL and Python",
+      "Airflow or a comparable orchestrator",
+      "Data quality and testing discipline"
+    ],
+    "responsibilities": [
+      "Own ingestion and transformation pipelines",
+      "Improve data quality monitoring"
+    ],
+    "technologies": [
+      "Python",
+      "SQL",
+      "PostgreSQL",
+      "Airflow",
+      "dbt",
+      "Docker"
+    ],
+    "postedAt": "2026-08-05T00:00:00Z"
+  }
+]

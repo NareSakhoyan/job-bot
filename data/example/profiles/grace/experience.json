@@ -1,0 +1,60 @@
+[
+  {
+    "slug": "meridian-ml-engineer",
+    "company": "Meridian Analytics",
+    "role": "Machine Learning Engineer",
+    "employmentType": "FULL_TIME",
+    "location": "Remote",
+    "isRemote": true,
+    "startDate": "2023-09-01",
+    "endDate": null,
+    "isCurrent": true,
+    "description": "Owned two production models end to end — a churn classifier and a document classifier — including the Airflow pipelines that fed them and the monitoring that caught drift.",
+    "technologies": [
+      "Python",
+      "PyTorch",
+      "scikit-learn",
+      "pandas",
+      "Airflow",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "responsibilities": [
+      "Built and maintained the feature pipelines the models trained and scored on",
+      "Set up offline evaluation that ran on every retrain, so a worse model could not ship quietly",
+      "Investigated production drift and retrained when the evaluation said it was warranted, not on a fixed schedule"
+    ],
+    "achievements": [
+      "Replaced a hand-tuned rules engine with a gradient-boosted classifier, and kept the rules as a documented fallback",
+      "Added per-segment evaluation that surfaced a model performing far worse on the smallest customer tier"
+    ],
+    "projects": []
+  },
+  {
+    "slug": "quillstone-data-scientist",
+    "company": "Quillstone",
+    "role": "Data Scientist",
+    "employmentType": "FULL_TIME",
+    "location": "Yerevan, Armenia",
+    "isRemote": false,
+    "startDate": "2022-01-01",
+    "endDate": "2023-08-31",
+    "isCurrent": false,
+    "description": "Analysis and modelling for a document-processing product, mostly text classification and extraction.",
+    "technologies": [
+      "Python",
+      "pandas",
+      "scikit-learn",
+      "Hugging Face",
+      "SQL"
+    ],
+    "responsibilities": [
+      "Built text classification models for routing incoming documents",
+      "Wrote the SQL and dashboards the product team used to see how routing performed"
+    ],
+    "achievements": [
+      "Cut manual review volume by routing high-confidence documents automatically and leaving the rest to a person"
+    ],
+    "projects": []
+  }
+]

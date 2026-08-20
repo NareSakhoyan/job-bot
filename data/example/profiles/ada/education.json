@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "ysu-bsc-informatics",
+    "institution": "Yerevan State University",
+    "program": "BSc, Informatics and Applied Mathematics",
+    "kind": "DEGREE",
+    "startDate": "2016-09-01",
+    "endDate": "2020-06-30",
+    "notes": null
+  },
+  {
+    "slug": "course-typescript-depth",
+    "institution": "Frontend Masters",
+    "program": "TypeScript in Depth",
+    "kind": "COURSE",
+    "startDate": "2023-04-01",
+    "endDate": "2023-05-31",
+    "notes": null
+  }
+]

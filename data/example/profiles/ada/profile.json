@@ -1,0 +1,139 @@
+{
+  "slug": "ada",
+  "fullName": "Ada Lovelace",
+  "email": "ada.lovelace@example.com",
+  "phone": "+374 00 00 00 00",
+  "location": "Yerevan, Armenia",
+  "headline": "Full-stack engineer working across TypeScript, Node and React",
+  "summary": "Full-stack engineer with six years building web products end to end — React and Next.js frontends alongside the Node and Nest.js services behind them. Comfortable owning a feature from API contract through to deployment, and happiest on small teams where that whole path is one person's job.",
+  "yearsOfExperience": 6,
+  "targetRoles": [
+    "Senior Software Engineer",
+    "Full-Stack Engineer",
+    "Backend Engineer",
+    "Frontend Engineer",
+    "AI Engineer"
+  ],
+  "skills": [
+    {
+      "name": "TypeScript",
+      "category": "Language",
+      "level": "EXPERT",
+      "yearsUsed": 6
+    },
+    {
+      "name": "JavaScript",
+      "category": "Language",
+      "level": "EXPERT",
+      "yearsUsed": 6
+    },
+    {
+      "name": "React",
+      "category": "Frontend",
+      "level": "EXPERT",
+      "yearsUsed": 6
+    },
+    {
+      "name": "Node.js",
+      "category": "Backend",
+      "level": "EXPERT",
+      "yearsUsed": 6
+    },
+    {
+      "name": "Next.js",
+      "category": "Frontend",
+      "level": "ADVANCED",
+      "yearsUsed": 4
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Database",
+      "level": "ADVANCED",
+      "yearsUsed": 5
+    },
+    {
+      "name": "Nest.js",
+      "category": "Backend",
+      "level": "ADVANCED",
+      "yearsUsed": 3
+    },
+    {
+      "name": "GraphQL",
+      "category": "Backend",
+      "level": "ADVANCED",
+      "yearsUsed": 3
+    },
+    {
+      "name": "Jest",
+      "category": "Testing",
+      "level": "INTERMEDIATE",
+      "yearsUsed": 4
+    },
+    {
+      "name": "Docker",
+      "category": "Infrastructure",
+      "level": "INTERMEDIATE",
+      "yearsUsed": 3
+    },
+    {
+      "name": "Redis",
+      "category": "Database",
+      "level": "INTERMEDIATE",
+      "yearsUsed": 2
+    },
+    {
+      "name": "OpenAI API",
+      "category": "AI",
+      "level": "INTERMEDIATE",
+      "yearsUsed": 2
+    },
+    {
+      "name": "Python",
+      "category": "Language",
+      "level": "BEGINNER",
+      "yearsUsed": 1
+    },
+    {
+      "name": "AWS",
+      "category": "Cloud",
+      "level": "BEGINNER",
+      "yearsUsed": 2
+    }
+  ],
+  "preferredLocations": [
+    "Remote",
+    "Yerevan"
+  ],
+  "remotePreference": "FLEXIBLE",
+  "salaryExpectation": {
+    "min": 48000,
+    "max": 72000,
+    "currency": "USD",
+    "period": "YEAR"
+  },
+  "employmentTypes": [
+    "FULL_TIME",
+    "CONTRACT",
+    "FREELANCE"
+  ],
+  "industries": [
+    "Developer tools",
+    "Fintech",
+    "Climate"
+  ],
+  "excludedCompanies": [],
+  "excludedTechnologies": [
+    "php"
+  ],
+  "workAuthorization": {
+    "country": "Armenia",
+    "status": "CITIZEN",
+    "requiresSponsorship": false,
+    "notes": "Remote employment and contract work are unrestricted. An on-site or hybrid role in the EU, UK or US would require visa sponsorship."
+  },
+  "links": {
+    "github": "https://github.com/example-ada",
+    "linkedin": "https://linkedin.com/in/example-ada",
+    "website": null
+  }
+}

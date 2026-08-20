@@ -1,0 +1,89 @@
+[
+  {
+    "slug": "northwind-senior-engineer",
+    "company": "Northwind Systems",
+    "role": "Senior Software Engineer",
+    "employmentType": "FULL_TIME",
+    "location": "Remote",
+    "isRemote": true,
+    "startDate": "2024-02-01",
+    "endDate": null,
+    "isCurrent": true,
+    "description": "Feature work across a TypeScript monorepo: React front end, Nest.js API and a PostgreSQL schema shared by both, with an LLM-backed summarisation feature added in 2025.",
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Nest.js",
+      "Node.js",
+      "PostgreSQL",
+      "Docker",
+      "OpenAI API"
+    ],
+    "responsibilities": [
+      "Owned features end to end, from the API contract through the React interface to the deployment that shipped them",
+      "Maintained the shared PostgreSQL schema and the migrations that changed it, coordinating breaking changes across two services",
+      "Reviewed the team's pull requests and kept the monorepo's testing conventions consistent as it grew"
+    ],
+    "achievements": [
+      "Cut the median API response time on the busiest endpoint by rewriting an N+1 query as a single join",
+      "Added a summarisation feature backed by the OpenAI API, including the retry and fallback handling for when it is unavailable"
+    ],
+    "projects": []
+  },
+  {
+    "slug": "brightline-fullstack-developer",
+    "company": "Brightline Labs",
+    "role": "Full-stack Developer",
+    "employmentType": "FULL_TIME",
+    "location": "Remote",
+    "isRemote": true,
+    "startDate": "2021-06-01",
+    "endDate": "2024-01-31",
+    "isCurrent": false,
+    "description": "Product engineering on a subscription analytics tool: React dashboards over a Node and GraphQL API, with reporting queries against PostgreSQL.",
+    "technologies": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL",
+      "Redis",
+      "Jest"
+    ],
+    "responsibilities": [
+      "Built the reporting dashboards and the GraphQL resolvers behind them",
+      "Introduced Redis caching for report queries that had been recomputed on every page load",
+      "Wrote the integration tests that ran against a real database rather than mocks"
+    ],
+    "achievements": [
+      "Took the reporting page from a timeout under large accounts to a consistent sub-second load by caching and paginating it"
+    ],
+    "projects": []
+  },
+  {
+    "slug": "orchard-junior-developer",
+    "company": "Orchard Interactive",
+    "role": "Junior Web Developer",
+    "employmentType": "FULL_TIME",
+    "location": "Yerevan, Armenia",
+    "isRemote": false,
+    "startDate": "2020-03-01",
+    "endDate": "2021-05-31",
+    "isCurrent": false,
+    "description": "Frontend work on client websites, building interfaces from designs and the small APIs behind them.",
+    "technologies": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "CSS"
+    ],
+    "responsibilities": [
+      "Implemented responsive interfaces from design files and wired them to the APIs serving them",
+      "Fixed accessibility issues reported by client audits, mostly keyboard navigation and contrast"
+    ],
+    "achievements": [],
+    "projects": []
+  }
+]

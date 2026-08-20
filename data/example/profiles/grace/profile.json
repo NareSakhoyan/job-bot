@@ -1,0 +1,118 @@
+{
+  "slug": "grace",
+  "fullName": "Grace Hopper",
+  "email": "grace.hopper@example.com",
+  "phone": "+374 00 00 00 00",
+  "location": "Yerevan, Armenia",
+  "headline": "Machine learning engineer working on applied models and data pipelines",
+  "summary": "Machine learning engineer with four years taking models from a notebook to something that runs on a schedule and can be debugged at three in the morning. Mostly Python, mostly tabular and text problems, with the data engineering that makes them possible.",
+  "yearsOfExperience": 4,
+  "targetRoles": [
+    "Machine Learning Engineer",
+    "ML Engineer",
+    "Data Scientist",
+    "Applied Data Scientist",
+    "Data Engineer"
+  ],
+  "skills": [
+    {
+      "name": "Python",
+      "category": "Language",
+      "level": "EXPERT",
+      "yearsUsed": 4
+    },
+    {
+      "name": "SQL",
+      "category": "Database",
+      "level": "EXPERT",
+      "yearsUsed": 4
+    },
+    {
+      "name": "PyTorch",
+      "category": "AI",
+      "level": "ADVANCED",
+      "yearsUsed": 3
+    },
+    {
+      "name": "pandas",
+      "category": "Data",
+      "level": "ADVANCED",
+      "yearsUsed": 4
+    },
+    {
+      "name": "scikit-learn",
+      "category": "AI",
+      "level": "ADVANCED",
+      "yearsUsed": 4
+    },
+    {
+      "name": "Airflow",
+      "category": "Data",
+      "level": "INTERMEDIATE",
+      "yearsUsed": 2
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Database",
+      "level": "INTERMEDIATE",
+      "yearsUsed": 3
+    },
+    {
+      "name": "Docker",
+      "category": "Infrastructure",
+      "level": "INTERMEDIATE",
+      "yearsUsed": 2
+    },
+    {
+      "name": "Hugging Face",
+      "category": "AI",
+      "level": "INTERMEDIATE",
+      "yearsUsed": 2
+    },
+    {
+      "name": "dbt",
+      "category": "Data",
+      "level": "BEGINNER",
+      "yearsUsed": 1
+    },
+    {
+      "name": "TypeScript",
+      "category": "Language",
+      "level": "BEGINNER",
+      "yearsUsed": 1
+    }
+  ],
+  "preferredLocations": [
+    "Remote",
+    "Yerevan"
+  ],
+  "remotePreference": "FLEXIBLE",
+  "salaryExpectation": {
+    "min": 42000,
+    "max": 65000,
+    "currency": "USD",
+    "period": "YEAR"
+  },
+  "employmentTypes": [
+    "FULL_TIME",
+    "CONTRACT"
+  ],
+  "industries": [
+    "Healthcare",
+    "Developer tools",
+    "Research"
+  ],
+  "excludedCompanies": [],
+  "excludedTechnologies": [],
+  "workAuthorization": {
+    "country": "Armenia",
+    "status": "CITIZEN",
+    "requiresSponsorship": false,
+    "notes": "Remote and contract work are unrestricted. On-site roles abroad would require sponsorship."
+  },
+  "links": {
+    "github": "https://github.com/example-grace",
+    "linkedin": "https://linkedin.com/in/example-grace",
+    "website": null
+  }
+}

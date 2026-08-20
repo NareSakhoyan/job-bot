@@ -22,8 +22,8 @@ coverage/
 artifacts/
 
 # Real profile data: names, emails, phone numbers, full employment history
-# for real people. data/profiles.example/ holds the same structure with
-# placeholder identities — copy it to data/profiles/ and fill it in.
+# for real people. data/example/ holds a complete fictional data directory;
+# seed from it with DATA_DIR, or copy its profiles/ and fill them in.
 data/profiles/
 
 # Personal planning documents. These are about the author's career rather
