@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ClerkProvider, Show, UserButton } from "@clerk/nextjs";
+import { clerkAppearance } from "@/lib/clerk-appearance";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ const NAV = [
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="en">
     <body className="min-h-screen antialiased">
-      <ClerkProvider>
+      <ClerkProvider appearance={clerkAppearance}>
         <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6">
           <header className="flex flex-wrap items-center gap-6 border-b border-[var(--color-line)] py-5">
             <Link href="/" className="text-base font-semibold tracking-tight">
