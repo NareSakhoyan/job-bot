@@ -6,6 +6,7 @@ import { APPLICATION_PIPELINE } from "@job-bot/shared";
 import { Card } from "@/components/ui";
 import { PipelinePanel } from "@/components/pipeline-panel";
 import { isProcessAlive } from "@/lib/pipeline-runner";
+import { canRunPipeline } from "@/lib/pipeline-capability";
 import { humanizeEnum } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
@@ -55,7 +56,17 @@ const OverviewPage = async ({ searchParams }: { searchParams: Promise<SearchPara
 
       <ProfileSwitcher profiles={profiles} activeSlug={active.slug} basePath="/" />
 
-      <PipelinePanel runs={runs} profiles={profiles} />
+      {canRunPipeline ? (
+        <PipelinePanel runs={runs} profiles={profiles} />
+      ) : (
+        <Card title="Pipeline">
+          <p className="text-sm text-[var(--color-ink-muted)]">
+            This deployment is a read-only demo. Discovery, matching, and preparation spawn
+            worker processes on the machine running the dashboard, so they are started from a
+            local checkout — see the README for the commands.
+          </p>
+        </Card>
+      )}
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Stat label="Distinct jobs" value={jobs.length} href={withProfile("/jobs", active.slug)} />

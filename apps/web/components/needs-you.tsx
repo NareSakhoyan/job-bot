@@ -41,7 +41,14 @@ const Heading = ({ application }: { application: AttentionApplication }) => (
  * system until someone says so, and until then it can be released back into
  * the queue and sent a second time.
  */
-export const NeedsYou = ({ applications }: { applications: AttentionApplication[] }) => {
+export const NeedsYou = ({
+  applications,
+  canLaunchRuns,
+}: {
+  applications: AttentionApplication[];
+  /** Filling a form drives a local browser; serverless deployments hide the button. */
+  canLaunchRuns: boolean;
+}) => {
   const handedOff = applications.filter((a) => a.submissionStatus === "HANDED_OFF" && a.submittedAt === null);
   const awaitingOutcome = applications.filter((a) => a.submittedAt !== null && a.outcome === null);
   // Mirrors listApprovedForSubmission: approved, unsent, and not already in a
@@ -66,12 +73,19 @@ export const NeedsYou = ({ applications }: { applications: AttentionApplication[
               Approved and ready. This fills the form and opens a browser window on this machine —
               nothing is sent until you click submit there yourself.
             </p>
-            <form action={startSubmission}>
-              <input type="hidden" name="applicationId" value={application.id} />
-              <button type="submit" className={`${button} hover:border-emerald-500/50 hover:text-emerald-300`}>
-                Fill the form &amp; open the browser
-              </button>
-            </form>
+            {canLaunchRuns ? (
+              <form action={startSubmission}>
+                <input type="hidden" name="applicationId" value={application.id} />
+                <button type="submit" className={`${button} hover:border-emerald-500/50 hover:text-emerald-300`}>
+                  Fill the form &amp; open the browser
+                </button>
+              </form>
+            ) : (
+              <p className="text-xs text-[var(--color-ink-muted)]">
+                Submission drives a browser on the machine running the dashboard — start it from
+                a local checkout.
+              </p>
+            )}
           </div>
         ))}
 

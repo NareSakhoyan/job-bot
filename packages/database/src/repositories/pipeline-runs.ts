@@ -2,6 +2,23 @@ import type { PipelineRunKind } from "@prisma/client";
 import { prisma } from "../client";
 
 /**
+ * Refusing to start because another run holds the lane. Expected whenever two
+ * people (or two clicks) race; callers show the running run rather than an
+ * error page.
+ */
+export class PipelineRunConflictError extends Error {
+  readonly kind: PipelineRunKind;
+  readonly startedAt: Date;
+
+  constructor(kind: PipelineRunKind, startedAt: Date) {
+    super(`A ${kind} run started at ${startedAt.toISOString()} is still going. One at a time.`);
+    this.name = "PipelineRunConflictError";
+    this.kind = kind;
+    this.startedAt = startedAt;
+  }
+}
+
+/**
  * Claims the right to run a pipeline stage.
  *
  * Batch stages are serialised with each other: discovery writes the jobs
@@ -32,9 +49,7 @@ export const startPipelineRun = async (params: {
     });
 
     if (running) {
-      throw new Error(
-        `A ${running.kind} run started at ${running.startedAt.toISOString()} is still going. One at a time.`,
-      );
+      throw new PipelineRunConflictError(running.kind, running.startedAt);
     }
 
     return tx.pipelineRun.create({

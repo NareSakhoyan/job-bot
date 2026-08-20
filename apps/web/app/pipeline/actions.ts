@@ -2,19 +2,43 @@
 
 import { revalidatePath } from "next/cache";
 import { currentActor } from "@/lib/actor";
-import { prisma } from "@job-bot/database";
+import { prisma, PipelineRunConflictError } from "@job-bot/database";
 import { launchPipelineRun } from "@/lib/pipeline-runner";
+import { canRunPipeline } from "@/lib/pipeline-capability";
 
 /** Same principal derivation as every other human action in the dashboard. */
 
 const refresh = () => revalidatePath("/");
 
+/** The UI hides these forms on serverless; this backstops a direct POST. */
+const assertPipelineAvailable = () => {
+  if (!canRunPipeline) {
+    throw new Error(
+      "This deployment cannot launch pipeline runs. Clone the repository and run the dashboard locally.",
+    );
+  }
+};
+
+/**
+ * A lost start race is not an error. Swallowing the conflict and refreshing
+ * shows the run that won, which is what the clicker needed to know.
+ */
+const launchUnlessBusy = async (params: Parameters<typeof launchPipelineRun>[0]) => {
+  try {
+    await launchPipelineRun(params);
+  } catch (error) {
+    if (!(error instanceof PipelineRunConflictError)) throw error;
+  }
+};
+
 export const startDiscovery = async (): Promise<void> => {
-  await launchPipelineRun({ kind: "DISCOVER", extraArgs: [], startedBy: await currentActor() });
+  assertPipelineAvailable();
+  await launchUnlessBusy({ kind: "DISCOVER", extraArgs: [], startedBy: await currentActor() });
   refresh();
 };
 
 export const startMatching = async (formData: FormData): Promise<void> => {
+  assertPipelineAvailable();
   const args = ["--all-profiles"];
   // Same default as the CLI: score only jobs with no match yet. Rescoring the
   // whole catalogue is the explicit choice, exactly as --all is.
@@ -26,11 +50,12 @@ export const startMatching = async (formData: FormData): Promise<void> => {
     args.push("--max-calls", maxCalls);
   }
 
-  await launchPipelineRun({ kind: "MATCH", extraArgs: args, startedBy: await currentActor() });
+  await launchUnlessBusy({ kind: "MATCH", extraArgs: args, startedBy: await currentActor() });
   refresh();
 };
 
 export const startPreparation = async (formData: FormData): Promise<void> => {
+  assertPipelineAvailable();
   const profile = String(formData.get("profile") ?? "").trim();
   if (profile.length === 0) throw new Error("Preparation needs a profile.");
 
@@ -43,7 +68,7 @@ export const startPreparation = async (formData: FormData): Promise<void> => {
   if (min.length > 0) args.push("--min", min);
   if (limit.length > 0) args.push("--limit", limit);
 
-  await launchPipelineRun({ kind: "PREPARE", extraArgs: args, startedBy: await currentActor() });
+  await launchUnlessBusy({ kind: "PREPARE", extraArgs: args, startedBy: await currentActor() });
   refresh();
 };
 
@@ -59,6 +84,7 @@ export const startPreparation = async (formData: FormData): Promise<void> => {
  * browser stays a typed command.
  */
 export const startSubmission = async (formData: FormData): Promise<void> => {
+  assertPipelineAvailable();
   const applicationId = String(formData.get("applicationId") ?? "");
   if (applicationId.length === 0) throw new Error("Missing application id.");
 
@@ -69,7 +95,7 @@ export const startSubmission = async (formData: FormData): Promise<void> => {
     select: { profile: { select: { slug: true } } },
   });
 
-  await launchPipelineRun({
+  await launchUnlessBusy({
     kind: "SUBMIT",
     extraArgs: [
       "--profile",

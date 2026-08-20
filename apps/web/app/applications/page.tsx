@@ -5,6 +5,7 @@ import { PipelineBoard } from "@/components/pipeline-board";
 import { AwaitingHuman } from "@/components/awaiting-human";
 import { Card, EmptyState } from "@/components/ui";
 import { NeedsYou } from "@/components/needs-you";
+import { canRunPipeline } from "@/lib/pipeline-capability";
 import { ExternalApplication } from "@/components/external-application";
 
 export const dynamic = "force-dynamic";
@@ -23,7 +24,7 @@ const ApplicationsPage = async ({ searchParams }: { searchParams: Promise<Search
 
       <ProfileSwitcher profiles={profiles} activeSlug={active.slug} basePath="/applications" />
 
-      <NeedsYou applications={applications} />
+      <NeedsYou applications={applications} canLaunchRuns={canRunPipeline} />
 
       <ExternalApplication profileId={active.id} />
 
