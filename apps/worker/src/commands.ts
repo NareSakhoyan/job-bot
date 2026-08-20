@@ -37,6 +37,9 @@ const logger = createLogger("worker");
 
 const ACTOR = "worker";
 
+/** Matched in parallel by default; --concurrency overrides it. */
+const DEFAULT_MATCH_CONCURRENCY = 6;
+
 /**
  * The configured sources.
  *
@@ -253,10 +256,6 @@ export const runDiscovery = async () => {
 };
 
 /**
- * Scores jobs for one profile and records the outcome. Moves that profile's
- * application one step along the pipeline, writing an audit event.
- */
-/**
  * Runs an async operation over a list with a bounded number in flight.
  *
  * Matching is network-bound, so running one job at a time wastes almost all of
@@ -314,6 +313,12 @@ export const runMatching = async (
   });
   const profile = toMatchProfile(profileRecord);
 
+  // Bounded rather than unlimited: matching is network-bound, but an
+  // unbounded fan-out opens a connection per job and trips provider rate
+  // limits. The call budget stays correct under concurrency because reserving
+  // a call is a synchronous check-and-increment that cannot interleave.
+  const concurrency = Math.max(1, options.concurrency ?? DEFAULT_MATCH_CONCURRENCY);
+
   const jobs = await listJobsForMatching(profileRecord.id, {
     includeScored: options.rescoreAll,
   });
@@ -329,21 +334,23 @@ export const runMatching = async (
   let reasoned = 0;
   let done = 0;
 
-  for (const job of jobs) {
+  await mapWithConcurrency(jobs, concurrency, async (job) => {
     const result = await agent.evaluate(profile, toMatchJob(job, companies));
+
     done += 1;
+    if (result.reasonedByModel) reasoned += 1;
     // A run over a couple of thousand jobs is silent for its whole middle
     // otherwise; the dashboard runner reads these lines as its progress bar.
     if (done % 100 === 0 || done === jobs.length) {
       logger.info("Matching progress", { profile: profileRecord.slug, done, total: jobs.length });
     }
+
     await saveJobMatch(profileRecord.id, job.id, result);
-    if (result.reasonedByModel) reasoned += 1;
 
     const application = await ensureApplication(profileRecord.id, job.id, ACTOR);
     // Only advance the early, agent-owned part of the pipeline. Anything a
     // human has already moved forward is left alone.
-    if (application.status !== "DISCOVERED" && application.status !== "ANALYZED") continue;
+    if (application.status !== "DISCOVERED" && application.status !== "ANALYZED") return;
 
     const toStatus: ApplicationStatus = result.score >= 65 ? "SHORTLISTED" : "ANALYZED";
     await transitionApplication({
@@ -353,7 +360,7 @@ export const runMatching = async (
       message: `Scored ${result.score}/100 (${result.recommendation})`,
       metadata: { modelVersion: result.modelVersion, reasonedByModel: result.reasonedByModel },
     });
-  }
+  });
 
   logger.info("Matching completed", {
     profile: profileRecord.slug,
