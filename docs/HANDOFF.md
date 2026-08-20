@@ -131,6 +131,12 @@ early. The fix would be to loosen the proper-noun check before the numeric one.
   `ANTHROPIC_API_KEY` in the shell silently shadows the file.
 - **Restart the dev server after `prisma generate`.** A running Next process
   holds the old client and fails with `Unknown argument` on new columns.
+- **Never rebuild while a server is serving that build.** `next start` and
+  `next dev` hold chunks from the build they started with; replacing `.next`
+  underneath them yields errors deep in `.next/server/chunks/*.js` that look
+  like library bugs. Clerk in particular reports that its middleware "did not
+  run" when the middleware bundle no longer matches the app chunks. Stop the
+  server, rebuild, start again — or use `build:isolated`.
 - **`pnpm build` writes `.next` and will clobber a running dev server.**
   That collision produces a 404 stylesheet and an unstyled dashboard. The
   build used to write `.next-build` to avoid it, which meant every
