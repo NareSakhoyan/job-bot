@@ -16,7 +16,9 @@
     "LLM_MATCH_MODEL",
     "LLM_MATCH_EFFORT",
     "LLM_MANUAL_DIR",
-    "LLM_MANUAL_TIMEOUT_MS"
+    "LLM_MANUAL_TIMEOUT_MS",
+    "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
+    "CLERK_SECRET_KEY"
   ],
   "tasks": {
     "build": {

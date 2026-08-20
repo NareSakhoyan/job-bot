@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { currentActor } from "@/lib/actor";
 import { recordHumanDecision } from "@job-bot/database";
 import { createLogger } from "@job-bot/shared";
 
@@ -25,31 +26,22 @@ export const decideApplication = async (formData: FormData): Promise<void> => {
     throw new Error(`Unsupported decision "${decision}".`);
   }
 
-  // Whoever authenticated is recorded alongside the decision. With Basic auth
-  // configured this is a real principal; without it, it is at least the origin
-  // the request came from.
+  // The signed-in Clerk user, and where the request came from. Approval is the
+  // decision that makes an application eligible to be sent, so it is the one
+  // most worth being able to attribute later.
+  const actor = await currentActor();
   const requestHeaders = await headers();
-  // The dashboard is unauthenticated, so this header is normally absent and
-  // every action is recorded as "human:dashboard". It is still read because
-  // the header appears when the deployment sits behind platform-level auth or
-  // a reverse proxy, and a real name is worth recording when one exists.
-  const authorization = requestHeaders.get("authorization") ?? "";
-  const principal =
-    authorization.startsWith("Basic ")
-      ? Buffer.from(authorization.slice(6), "base64").toString("utf8").split(":")[0] || "dashboard"
-      : "dashboard";
-
   const origin = requestHeaders.get("x-forwarded-for") ?? requestHeaders.get("host") ?? null;
 
   await recordHumanDecision({
     applicationId,
     decision,
-    actor: `human:${principal}`,
+    actor,
     note: note.length === 0 ? null : note,
     origin,
   });
 
-  logger.info("Human decision recorded", { applicationId, decision, principal, origin });
+  logger.info("Human decision recorded", { applicationId, decision, actor, origin });
 
   revalidatePath("/review");
   revalidatePath("/applications");

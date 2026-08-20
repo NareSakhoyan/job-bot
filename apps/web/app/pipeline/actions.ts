@@ -1,28 +1,16 @@
 "use server";
 
-import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { currentActor } from "@/lib/actor";
 import { prisma } from "@job-bot/database";
 import { launchPipelineRun } from "@/lib/pipeline-runner";
 
 /** Same principal derivation as every other human action in the dashboard. */
-const principalFromRequest = async (): Promise<string> => {
-  const requestHeaders = await headers();
-  // The dashboard is unauthenticated, so this header is normally absent and
-  // every action is recorded as "human:dashboard". It is still read because
-  // the header appears when the deployment sits behind platform-level auth or
-  // a reverse proxy, and a real name is worth recording when one exists.
-  const authorization = requestHeaders.get("authorization") ?? "";
-  const name = authorization.startsWith("Basic ")
-    ? Buffer.from(authorization.slice(6), "base64").toString("utf8").split(":")[0] || "dashboard"
-    : "dashboard";
-  return `human:${name}`;
-};
 
 const refresh = () => revalidatePath("/");
 
 export const startDiscovery = async (): Promise<void> => {
-  await launchPipelineRun({ kind: "DISCOVER", extraArgs: [], startedBy: await principalFromRequest() });
+  await launchPipelineRun({ kind: "DISCOVER", extraArgs: [], startedBy: await currentActor() });
   refresh();
 };
 
@@ -38,7 +26,7 @@ export const startMatching = async (formData: FormData): Promise<void> => {
     args.push("--max-calls", maxCalls);
   }
 
-  await launchPipelineRun({ kind: "MATCH", extraArgs: args, startedBy: await principalFromRequest() });
+  await launchPipelineRun({ kind: "MATCH", extraArgs: args, startedBy: await currentActor() });
   refresh();
 };
 
@@ -55,7 +43,7 @@ export const startPreparation = async (formData: FormData): Promise<void> => {
   if (min.length > 0) args.push("--min", min);
   if (limit.length > 0) args.push("--limit", limit);
 
-  await launchPipelineRun({ kind: "PREPARE", extraArgs: args, startedBy: await principalFromRequest() });
+  await launchPipelineRun({ kind: "PREPARE", extraArgs: args, startedBy: await currentActor() });
   refresh();
 };
 
@@ -92,7 +80,7 @@ export const startSubmission = async (formData: FormData): Promise<void> => {
       "handoff",
       "--confirm",
     ],
-    startedBy: await principalFromRequest(),
+    startedBy: await currentActor(),
   });
 
   revalidatePath("/applications");

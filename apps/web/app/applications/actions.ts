@@ -1,7 +1,7 @@
 "use server";
 
-import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { currentActor } from "@/lib/actor";
 import {
   ensureApplication,
   markSubmitted,
@@ -20,24 +20,6 @@ import { createLogger } from "@job-bot/shared";
 
 const logger = createLogger("web.applications");
 
-/**
- * Whoever authenticated, recorded alongside the decision.
- *
- * The `human:` prefix is load-bearing: repository writes that represent a
- * person's choice check for it, so an agent cannot fabricate one.
- */
-const principalFromRequest = async (): Promise<string> => {
-  const requestHeaders = await headers();
-  // The dashboard is unauthenticated, so this header is normally absent and
-  // every action is recorded as "human:dashboard". It is still read because
-  // the header appears when the deployment sits behind platform-level auth or
-  // a reverse proxy, and a real name is worth recording when one exists.
-  const authorization = requestHeaders.get("authorization") ?? "";
-  const name = authorization.startsWith("Basic ")
-    ? Buffer.from(authorization.slice(6), "base64").toString("utf8").split(":")[0] || "dashboard"
-    : "dashboard";
-  return `human:${name}`;
-};
 
 const refresh = () => {
   revalidatePath("/applications");
@@ -68,7 +50,7 @@ export const markSentByHand = async (formData: FormData): Promise<void> => {
 
   await markSubmitted({
     applicationId,
-    actor: await principalFromRequest(),
+    actor: await currentActor(),
     url: application.job.url,
     confirmationText: note.length > 0 ? note : "Submitted by hand from the handed-off window.",
     screenshots: [],
@@ -86,7 +68,7 @@ export const releaseHandoffAction = async (formData: FormData): Promise<void> =>
 
   await releaseHandoff({
     applicationId,
-    actor: await principalFromRequest(),
+    actor: await currentActor(),
     reason: "Closed without submitting; returned to the queue from the dashboard.",
   });
 
@@ -118,7 +100,7 @@ export const recordOutcomeAction = async (formData: FormData): Promise<void> => 
     verbatim: verbatim.length === 0 ? null : verbatim,
     reasons: classified.reasons,
     learnedVia: String(formData.get("learnedVia") ?? "").trim() || null,
-    recordedBy: await principalFromRequest(),
+    recordedBy: await currentActor(),
     decidedAt: new Date(),
   });
 
@@ -140,7 +122,7 @@ export const setApplicationStatus = async (formData: FormData): Promise<void> =>
   await transitionApplication({
     applicationId,
     toStatus: status as ApplicationStatus,
-    actor: await principalFromRequest(),
+    actor: await currentActor(),
     message: note.length > 0 ? note : "Status set by hand from the dashboard.",
   });
 
@@ -166,7 +148,7 @@ export const markAppliedByHand = async (formData: FormData): Promise<void> => {
   const note = String(formData.get("note") ?? "").trim();
   if (jobId.length === 0 || profileId.length === 0) throw new Error("Missing job or profile.");
 
-  const actor = await principalFromRequest();
+  const actor = await currentActor();
   const application = await ensureApplication(profileId, jobId, actor);
   const job = await prisma.job.findUniqueOrThrow({ where: { id: jobId }, select: { url: true } });
 
@@ -205,7 +187,7 @@ export const recordExternalApplication = async (formData: FormData): Promise<voi
     throw new Error("A company and a title are required.");
   }
 
-  const actor = await principalFromRequest();
+  const actor = await currentActor();
   const job = await recordExternalJob({ company, title, url });
   const application = await ensureApplication(profileId, job.id, actor);
 

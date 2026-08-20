@@ -27,7 +27,7 @@ out of credit, so every score is deterministic-only.
 ## Architecture, briefly
 
 ```
-apps/web      Next 15 App Router, RSC + server actions. No authentication.
+apps/web      Next 15 App Router, RSC + server actions, Clerk authentication
 apps/worker   CLI: discover · match · prepare · fill · submit · export · purge
 packages/
   shared      Zod schemas, enums, logger, path/env resolution
