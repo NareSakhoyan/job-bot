@@ -16,8 +16,7 @@
     "LLM_MATCH_MODEL",
     "LLM_MATCH_EFFORT",
     "LLM_MANUAL_DIR",
-    "LLM_MANUAL_TIMEOUT_MS",
-    "DASHBOARD_PASSWORD"
+    "LLM_MANUAL_TIMEOUT_MS"
   ],
   "tasks": {
     "build": {

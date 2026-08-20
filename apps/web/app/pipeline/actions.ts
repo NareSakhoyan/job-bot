@@ -8,6 +8,10 @@ import { launchPipelineRun } from "@/lib/pipeline-runner";
 /** Same principal derivation as every other human action in the dashboard. */
 const principalFromRequest = async (): Promise<string> => {
   const requestHeaders = await headers();
+  // The dashboard is unauthenticated, so this header is normally absent and
+  // every action is recorded as "human:dashboard". It is still read because
+  // the header appears when the deployment sits behind platform-level auth or
+  // a reverse proxy, and a real name is worth recording when one exists.
   const authorization = requestHeaders.get("authorization") ?? "";
   const name = authorization.startsWith("Basic ")
     ? Buffer.from(authorization.slice(6), "base64").toString("utf8").split(":")[0] || "dashboard"

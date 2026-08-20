@@ -29,6 +29,10 @@ export const decideApplication = async (formData: FormData): Promise<void> => {
   // configured this is a real principal; without it, it is at least the origin
   // the request came from.
   const requestHeaders = await headers();
+  // The dashboard is unauthenticated, so this header is normally absent and
+  // every action is recorded as "human:dashboard". It is still read because
+  // the header appears when the deployment sits behind platform-level auth or
+  // a reverse proxy, and a real name is worth recording when one exists.
   const authorization = requestHeaders.get("authorization") ?? "";
   const principal =
     authorization.startsWith("Basic ")
